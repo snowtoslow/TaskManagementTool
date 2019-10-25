@@ -1,18 +1,19 @@
 package com.taskMannagerTool.tasktoolservice.Models;
 
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
-public class User {
-
+public class user {
 
     private int id;
     //@Column(name = "name")
+
     private String name;
+
     private String surname;
+
     private String username;
+
     private String jobTitle;
+
     private String team; //no need of team
 
     public int getId() {

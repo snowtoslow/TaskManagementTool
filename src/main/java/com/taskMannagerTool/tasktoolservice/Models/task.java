@@ -1,15 +1,16 @@
 package com.taskMannagerTool.tasktoolservice.Models;
 
-public class Task {
+public class task {
+
     private int id;
 
     private String title;
 
     private String date; //smthn with local date time
 
-    private User reporter;
+    private user reporter;
 
-    private User reciever;
+    private user reciever;
 
     private String description;
 
@@ -37,19 +38,19 @@ public class Task {
         this.date = date;
     }
 
-    public User getReporter() {
+    public user getReporter() {
         return reporter;
     }
 
-    public void setReporter(User reporter) {
+    public void setReporter(user reporter) {
         this.reporter = reporter;
     }
 
-    public User getReciever() {
+    public user getReciever() {
         return reciever;
     }
 
-    public void setReciever(User reciever) {
+    public void setReciever(user reciever) {
         this.reciever = reciever;
     }
 
