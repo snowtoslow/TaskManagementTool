@@ -1,16 +1,23 @@
-package com.taskMannagerTool.tasktoolservice.Models;
+package com.taskMannagerTool.tasktoolservice.models;
 
-public class task {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+@Entity
+public class Task {
+
+    @Id
+    @GeneratedValue
     private int id;
 
     private String title;
 
     private String date; //smthn with local date time
 
-    private user reporter;
+    private User reporter;
 
-    private user reciever;
+    private User reciever;
 
     private String description;
 
@@ -38,19 +45,19 @@ public class task {
         this.date = date;
     }
 
-    public user getReporter() {
+    public User getReporter() {
         return reporter;
     }
 
-    public void setReporter(user reporter) {
+    public void setReporter(User reporter) {
         this.reporter = reporter;
     }
 
-    public user getReciever() {
+    public User getReciever() {
         return reciever;
     }
 
-    public void setReciever(user reciever) {
+    public void setReciever(User reciever) {
         this.reciever = reciever;
     }
 

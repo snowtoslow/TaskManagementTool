@@ -1,10 +1,15 @@
-package com.taskMannagerTool.tasktoolservice.Models;
+package com.taskMannagerTool.tasktoolservice.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-public class user {
+@Entity
+public class User {
 
+    @Id
+    @GeneratedValue
     private int id;
-    //@Column(name = "name")
 
     private String name;
 
