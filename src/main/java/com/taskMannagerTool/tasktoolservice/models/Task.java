@@ -1,71 +1,64 @@
 package com.taskMannagerTool.tasktoolservice.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "tasks")
 public class Task {
 
     @Id
-    @GeneratedValue
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "Id_Task")
+    private int taskTd;
 
-    private String title;
+    @Column(name = "Task_Name")
+    private String taskTitle;
 
-    private String date; //smthn with local date time
+    //@Column(name = "")
+    //private String taskDate; //smthn with local date time
 
-    private User reporter;
+    //@Column(name = "Id_User")
+    //private User reporter;
 
-    private User reciever;
+    //@Column(name = "")
+    //private User reciever;
 
-    private String description;
+    @Column(name = "Description")
+    private String taskDescription;
 
-    public int getId() {
-        return id;
+    @Column(name = "Priority")
+    private Priority taskPriority;
+
+    public int getTaskTd() {
+        return taskTd;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setTaskTd(int taskTd) {
+        this.taskTd = taskTd;
     }
 
-    public String getTitle() {
-        return title;
+    public String getTaskTitle() {
+        return taskTitle;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTaskTitle(String taskTitle) {
+        this.taskTitle = taskTitle;
     }
 
-    public String getDate() {
-        return date;
+
+    public String getTaskDescription() {
+        return taskDescription;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setTaskDescription(String taskDescription) {
+        this.taskDescription = taskDescription;
     }
 
-    public User getReporter() {
-        return reporter;
+    public Priority getTaskPriority() {
+        return taskPriority;
     }
 
-    public void setReporter(User reporter) {
-        this.reporter = reporter;
-    }
-
-    public User getReciever() {
-        return reciever;
-    }
-
-    public void setReciever(User reciever) {
-        this.reciever = reciever;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setTaskPriority(Priority taskPriority) {
+        this.taskPriority = taskPriority;
     }
 }

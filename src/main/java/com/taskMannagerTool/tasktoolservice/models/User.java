@@ -1,25 +1,28 @@
 package com.taskMannagerTool.tasktoolservice.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "Id_User")
     private int id;
 
+    @Column(name = "Name")
     private String name;
 
+    @Column(name = "Surname")
     private String surname;
 
+    @Column(name = "Usename")
     private String username;
 
+    @Column(name = "Speciality")
     private String jobTitle;
 
-    private String team; //no need of team
 
     public int getId() {
         return id;
@@ -61,11 +64,4 @@ public class User {
         this.jobTitle = jobTitle;
     }
 
-    public String getTeam() {
-        return team;
-    }
-
-    public void setTeam(String team) {
-        this.team = team;
-    }
 }
