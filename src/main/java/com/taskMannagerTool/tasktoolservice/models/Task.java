@@ -9,7 +9,7 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id_Task")
-    private int taskTd;
+    private int taskId;
 
     @Column(name = "Task_Name")
     private String taskTitle;
@@ -29,12 +29,12 @@ public class Task {
     @Column(name = "Priority")
     private Priority taskPriority;
 
-    public int getTaskTd() {
-        return taskTd;
+    public int getTaskId() {
+        return taskId;
     }
 
     public void setTaskTd(int taskTd) {
-        this.taskTd = taskTd;
+        this.taskId = taskTd;
     }
 
     public String getTaskTitle() {
