@@ -17,7 +17,7 @@ public class ProjectService {
     @Autowired
     private ProjectRepository projectRepository;
 
-    @PostMapping("/project")
+    @PostMapping("/projects")
     public ResponseEntity<Object> createProject(@RequestBody Project project){//добавить респонс бади
         Project savedProject = projectRepository.save(project);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{taskId}")
@@ -26,13 +26,13 @@ public class ProjectService {
         return ResponseEntity.created(location).build();
     }
 
-    @GetMapping("/project")//Read
+    @GetMapping("/projects")//Read
     public List<Project> readAllProjects(){
         return projectRepository.findAll();
     }
 
     //Read a specific task by Id;
-    @GetMapping("/project/{projectId}")
+    @GetMapping("/projects/{projectId}")
     public Project readAProjectById(@PathVariable int projectId){
         Optional<Project> project = projectRepository.findById(projectId);//костыль надо поменять
 
@@ -43,7 +43,7 @@ public class ProjectService {
     }
 
 
-    @PutMapping("/project/{projectId}")
+    @PutMapping("/projects/{projectId}")
     public ResponseEntity<Object> updateProject(@RequestBody Project project, @PathVariable int projectId){
         Optional<Project>  projectOptional = projectRepository.findById(projectId);
 
@@ -54,7 +54,7 @@ public class ProjectService {
         return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping("project/{projectId}")
+    @DeleteMapping("projects/{projectId}")
     public void deleteTask(@PathVariable int projectId){
         projectRepository.deleteById(projectId);
     }

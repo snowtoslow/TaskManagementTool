@@ -19,7 +19,7 @@ public class TaskService{
     @Autowired
     private TaskRepository taskRepository;
 
-    @PostMapping("/task")
+    @PostMapping("/tasks")
     public ResponseEntity<Object> createTask(@RequestBody Task task){//добавить респонс бади
         Task savedTask = taskRepository.save(task);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{taskId}")
@@ -28,13 +28,13 @@ public class TaskService{
         return ResponseEntity.created(location).build();
     }
 
-    @GetMapping("/task")//Read
+    @GetMapping("/tasks")//Read
     public List<Task> readAllTasks(){
         return taskRepository.findAll();
     }
 
     //Read a specific task by Id;
-    @GetMapping("/task/{taskId}")
+    @GetMapping("/tasks/{taskId}")
     public Task readATaskById(@PathVariable int taskId){
         Optional<Task> task = taskRepository.findById(taskId);//костыль надо поменять
 
@@ -45,7 +45,7 @@ public class TaskService{
     }
 
 
-    @PutMapping("/task/{taskId}")
+    @PutMapping("/tasks/{taskId}")
     public ResponseEntity<Object> updateTask(@RequestBody Task task, @PathVariable int taskId){
         Optional<Task>  taskOptional = taskRepository.findById(taskId);
 
@@ -56,7 +56,7 @@ public class TaskService{
         return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping("task/{taskId}")
+    @DeleteMapping("tasks/{taskId}")
     public void deleteTask(@PathVariable int taskId){
         taskRepository.deleteById(taskId);
     }
