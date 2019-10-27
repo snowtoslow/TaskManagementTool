@@ -8,7 +8,7 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id_Project")
-    private int Id;
+    private int projectId;
 
     @Column(name = "Project_Name")
     private String projectName;
@@ -16,16 +16,13 @@ public class Project {
     @Column(name = "Project_Discription")
     private String projectDiscription;
 
-    //@Column(name = "")
-    //private State projectState;
 
-
-    public int getId() {
-        return Id;
+    public int getProjectId() {
+        return projectId;
     }
 
-    public void setId(int id) {
-        Id = id;
+    public void setProjectId(int projectId) {
+        this.projectId = projectId;
     }
 
     public String getProjectName() {

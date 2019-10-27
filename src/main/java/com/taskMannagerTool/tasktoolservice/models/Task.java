@@ -14,15 +14,6 @@ public class Task {
     @Column(name = "Task_Name")
     private String taskTitle;
 
-    //@Column(name = "")
-    //private String taskDate; //smthn with local date time
-
-    //@Column(name = "Id_User")
-    //private User reporter;
-
-    //@Column(name = "")
-    //private User reciever;
-
     @Column(name = "Description")
     private String taskDescription;
 
