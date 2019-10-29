@@ -1,8 +1,6 @@
 package com.taskMannagerTool.tasktoolservice.service;
 
-import com.taskMannagerTool.tasktoolservice.models.Task;
 import com.taskMannagerTool.tasktoolservice.models.User;
-import com.taskMannagerTool.tasktoolservice.repository.TaskRepository;
 import com.taskMannagerTool.tasktoolservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +31,7 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    //Read a specific task by Id;
+    //Read a specific user by Id;
     @GetMapping("/users/{userId}")
     public User readUserById(@PathVariable int userId){
         Optional<User> user = userRepository.findById(userId);//костыль надо поменять
