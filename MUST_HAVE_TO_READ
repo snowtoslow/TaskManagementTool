@@ -2,7 +2,7 @@
 
                  В апликашионс надо настраивать ручками(но это пока мы не прошарели как генерить базу при создании app)
 
-                      spring.datasource.url=jdbc:sqlserver://localhost:1433;databaseName=TaskTool
+                      spring.datasource.url=jdbc:sqlserver://localhost:1433;databaseName=task_tool
                       spring.datasource.username= {исправляем при скачивании и !!!!!НЕПУШИМ!!!! ЭТО ФАЙЛ В ГИТ(ПОКА В ГИТЕ МОЯ ОСНОВНАЯ ВЕРСИЯ БУДЕТ)}
                       spring.datasource.password={ЧИТАТЬ ТОЖЕ САМОЕ ЧТО ВЫШЕ}
                       spring.datasource.driverClassName=com.microsoft.sqlserver.jdbc.SQLServerDriver
