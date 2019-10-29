@@ -11,27 +11,16 @@
                       spring.jpa.hibernate.ddl-auto = create-drop
 
 
-                        // @OneToOne(optional = false, mappedBy = "tasks")//гляньте если это работает как надо кто будет этим заниматься
-                            //private Task task;
-
-                            //public Task getTask() {
-                              //  return task;
-                            //}
-
-                           // public void setTask(Task task) {
-                             //   this.task = task;
-                            //}
+                 была добавлена бэйзик аутентификация:
+                КАК ЭТО ЮЗАТЬ:
+                1) ЗАХОДИМ В ПОСТМАН ТАМ ПОД УКАЗАННОЙ ВАМИ СЫЛКОЙ ЕСТЬ АУТОРИЗЭЙШН
+                2) КЛИКАЕМ НА НЕГО)))
+                3) ВЫ УВИДИТЕ "Type"
+                3) Выбираем бэйзик аутентификацию;
+                4) Вводим login:universal , password:qwerty123
+                5) ВУУУУУААААААААЛЯ)
 
 
-                             // @OneToOne(optional = false)
-                                //private Project project;
-                                //public Project getProject(){
-                                 //   return project;
-                               // }
-
-                                //public void setProject(Project project){
-                                  //  this.project = project;
-                                //}
 
 
 
