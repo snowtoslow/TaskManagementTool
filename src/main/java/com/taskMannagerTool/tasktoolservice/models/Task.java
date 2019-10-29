@@ -40,8 +40,7 @@ public class Task {
     }
 
     public void setSenderId(int senderId) {
-        User user = new User();
-        this.senderId = user.userId;
+        this.senderId = senderId;
     }
 
     public int getReceiverId() {
@@ -49,8 +48,7 @@ public class Task {
     }
 
     public void setReceiverId(int receiverId) {
-        User user = new User();
-        this.receiverId = user.userId;
+        this.receiverId = receiverId;
     }
 
     @Column(name = "Id_Resiver")
