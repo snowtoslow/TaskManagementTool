@@ -2,6 +2,7 @@ package com.taskMannagerTool.tasktoolservice.models;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -10,7 +11,7 @@ import java.util.Date;
 public class Task {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "Id_Task")
     private int taskId;
 
@@ -27,13 +28,17 @@ public class Task {
     private State taskState;
 
     @Column(name = "Task_StartDate")
-    private Date taskStartDate;
+    private String taskStartDate;
 
+    @CreationTimestamp
     @Column(name = "Task_Duedate")
-    private Date taskDueDate;
+    private String taskDueDate;
 
     @Column(name = "Id_Sender")
     private int senderId;
+
+    @Column(name = "Id_Resiver")
+    private int receiverId;
 
     public int getSenderId() {
         return senderId;
@@ -50,10 +55,6 @@ public class Task {
     public void setReceiverId(int receiverId) {
         this.receiverId = receiverId;
     }
-
-    @Column(name = "Id_Resiver")
-    private int receiverId;
-
 
     public int getTaskId() {
         return taskId;
@@ -100,19 +101,19 @@ public class Task {
         this.taskState = taskState;
     }
 
-    public Date getTaskStartDate() {
+    public String getTaskStartDate() {
         return taskStartDate;
     }
 
-    public void setTaskStartDate(Date taskStartDate) {
+    public void setTaskStartDate(String taskStartDate) {
         this.taskStartDate = taskStartDate;
     }
 
-    public Date getTaskDueDate() {
+    public String getTaskDueDate() {
         return taskDueDate;
     }
 
-    public void setTaskDueDate(Date taskDueDate) {
+    public void setTaskDueDate(String taskDueDate) {
         this.taskDueDate = taskDueDate;
     }
 
