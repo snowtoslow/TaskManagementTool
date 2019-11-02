@@ -16,6 +16,8 @@ public class Project {
     @Column(name = "Project_Discription")
     private String projectDescription;
 
+    @Column(name = "Project_State")
+    private boolean projectState;
 
     public int getProjectId() {
         return projectId;
@@ -41,4 +43,11 @@ public class Project {
         this.projectDescription = projectDescription;
     }
 
+    public boolean isProjectState() {
+        return projectState;
+    }
+
+    public void setProjectState(boolean projectState) {
+        this.projectState = projectState;
+    }
 }

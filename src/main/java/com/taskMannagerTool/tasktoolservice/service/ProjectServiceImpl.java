@@ -44,12 +44,12 @@ public class ProjectServiceImpl {
 
 
 
-    public ResponseEntity<Object> updateProject( Project project, int projectId){
-        Optional<Project>  projectOptional = projectRepository.findById(projectId);
+    public ResponseEntity<Object> updateProject( Project project){
+        Optional<Project>  projectOptional = projectRepository.findById(project.getProjectId());
 
         if(!projectOptional.isPresent())
             return ResponseEntity.notFound().build();
-        project.setProjectId(projectId);
+
         projectRepository.save(project);
         return ResponseEntity.noContent().build();
     }

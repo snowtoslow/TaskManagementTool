@@ -39,12 +39,12 @@ public class UserServiceImpl {
     }
 
 
-    public ResponseEntity<Object> updateUser(User user,int userId){
-        Optional<User>  userOptional = userRepository.findById(userId);
+    public ResponseEntity<Object> updateUser(User user){
+        Optional<User> userOptional = userRepository.findById(user.getUserId());
 
         if(!userOptional.isPresent())
             return ResponseEntity.notFound().build();
-        user.setUserId(userId);
+
         userRepository.save(user);
         return ResponseEntity.noContent().build();
     }

@@ -13,7 +13,7 @@ public interface ProjectService {
 
     Project readAProjectById(int ProjectId);//R
 
-    ResponseEntity<Object> updateProject(Project project, int ProjectId);//U !!!!!пересмотреть в имплементэйшне!!!
+    ResponseEntity<Object> updateProject(Project project);//U !!!!!пересмотреть в имплементэйшне!!!
 
     void deleteProject(int projectId);//D
 }

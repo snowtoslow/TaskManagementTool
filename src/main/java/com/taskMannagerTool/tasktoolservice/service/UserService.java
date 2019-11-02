@@ -13,7 +13,7 @@ public interface UserService {
 
     User readAUserById(int userId);
 
-    ResponseEntity<Object> updateUser(User user,int userId);//U !!!!!пересмотреть в имплементэйшне!!!
+    ResponseEntity<Object> updateUser(User user);//U !!!!!пересмотреть в имплементэйшне!!!
 
     void deleteUser(int userId);
 }

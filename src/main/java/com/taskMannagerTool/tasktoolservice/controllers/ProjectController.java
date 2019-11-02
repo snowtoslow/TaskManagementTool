@@ -29,9 +29,9 @@ public class ProjectController implements ProjectService {
         return projectService.readAProjectById(projectId);
     }
 
-    @PutMapping("/projects/{projectId}")
-    public ResponseEntity<Object> updateProject(Project project, int projectId) {
-        return projectService.updateProject(project,projectId);
+    @PutMapping("/projects/update")
+    public ResponseEntity<Object> updateProject(@RequestBody Project project) {
+        return projectService.updateProject(project);
     }
 
     @DeleteMapping("/projects/{projectId}")

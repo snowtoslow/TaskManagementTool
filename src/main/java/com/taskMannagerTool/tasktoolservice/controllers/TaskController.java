@@ -12,8 +12,9 @@ import java.util.List;
 
 @RestController
 public class TaskController implements TaskService {
+
     @Autowired
-    TaskServiceImpl taskService = new TaskServiceImpl();
+    TaskServiceImpl taskService;
 
     @PostMapping("/tasks")
     public ResponseEntity<Object> createTask(@RequestBody Task task) {
@@ -30,9 +31,9 @@ public class TaskController implements TaskService {
         return taskService.readATaskById(taskId);
     }
 
-    @PutMapping("/tasks/{taskId}")
-    public ResponseEntity<Object> updateTask(Task task, int taskId) {
-        return taskService.updateTask(task,taskId);
+    @PutMapping("/tasks/update")
+    public ResponseEntity<Object> updateTask(@RequestBody Task task) {
+        return taskService.updateTask(task);
     }
 
     @DeleteMapping("/tasks/{taskId}")

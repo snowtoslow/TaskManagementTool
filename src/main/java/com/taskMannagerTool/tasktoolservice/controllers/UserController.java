@@ -30,9 +30,9 @@ public class UserController implements UserService {
         return userService.readAUserById(userId);
     }
 
-    @PutMapping("/users/{userId}")
-    public ResponseEntity<Object> updateUser(User user, int userId) {
-        return userService.updateUser(user,userId);
+    @PutMapping("/users/update")
+    public ResponseEntity<Object> updateUser(User user) {
+        return userService.updateUser(user);
     }
 
     @DeleteMapping("/users/{userId}")

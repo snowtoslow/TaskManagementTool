@@ -39,12 +39,12 @@ public class TaskServiceImpl {
     }
 
 
-    public ResponseEntity<Object> updateTask(Task task,int taskId){
-        Optional<Task> taskOptional = taskRepository.findById(taskId);
+    public ResponseEntity<Object> updateTask(Task task){
+        Optional<Task> taskOptional = taskRepository.findById(task.getTaskId());
 
         if(!taskOptional.isPresent())
             return ResponseEntity.notFound().build();
-        task.setTaskTd(taskId);
+
         taskRepository.save(task);
         return ResponseEntity.noContent().build();
     }
