@@ -14,7 +14,7 @@ public class Project {
     @Column(name = "Project_Name")
     private String projectName;
 
-    @Column(name = "Project_Discription")
+    @Column(name = "Project_Description")
     private String projectDescription;
 
     @Column(name = "Project_State")
