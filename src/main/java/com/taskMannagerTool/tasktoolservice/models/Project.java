@@ -1,6 +1,7 @@
 package com.taskMannagerTool.tasktoolservice.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "projects")
@@ -18,6 +19,10 @@ public class Project {
 
     @Column(name = "Project_State")
     private boolean projectState;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "Id_Project",referencedColumnName = "Id_Project")
+    private List<Task> tasksList;
 
     public int getProjectId() {
         return projectId;
@@ -49,5 +54,13 @@ public class Project {
 
     public void setProjectState(boolean projectState) {
         this.projectState = projectState;
+    }
+
+    public List<Task> getTasksList() {
+        return tasksList;
+    }
+
+    public void setTasksList(List<Task> tasksList) {
+        this.tasksList = tasksList;
     }
 }

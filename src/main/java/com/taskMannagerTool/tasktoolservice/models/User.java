@@ -1,6 +1,7 @@
 package com.taskMannagerTool.tasktoolservice.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -28,6 +29,10 @@ public class User {
 
     @Column(name = "User_Git")
     private String userGit;
+
+    @OneToMany(cascade = CascadeType.ALL)//под вопросом
+    @JoinColumn(name = "Id_User",referencedColumnName = "Id_User")
+    private List<Task> tasks;
 
 
     public int getUserId() {
@@ -84,5 +89,13 @@ public class User {
 
     public void setUserGit(String userGit) {
         this.userGit = userGit;
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
     }
 }

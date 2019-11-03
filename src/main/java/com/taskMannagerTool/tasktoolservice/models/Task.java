@@ -36,21 +36,6 @@ public class Task {
     @Column(name = "Id_Resiver")
     private int receiverId;
 
-    public int getSenderId() {
-        return senderId;
-    }
-
-    public void setSenderId(int senderId) {
-        this.senderId = senderId;
-    }
-
-    public int getReceiverId() {
-        return receiverId;
-    }
-
-    public void setReceiverId(int receiverId) {
-        this.receiverId = receiverId;
-    }
 
     public int getTaskId() {
         return taskId;
@@ -113,4 +98,19 @@ public class Task {
         this.taskDueDate = taskDueDate;
     }
 
+    public int getSenderId() {
+        return senderId;
+    }
+
+    public void setSenderId(int senderId) {
+        this.senderId = senderId;
+    }
+
+    public int getReceiverId() {
+        return receiverId;
+    }
+
+    public void setReceiverId(int receiverId) {
+        this.receiverId = receiverId;
+    }
 }
