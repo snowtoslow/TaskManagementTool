@@ -14,7 +14,7 @@ import java.util.List;
 public class TaskController implements TaskService {
 
     @Autowired
-    TaskServiceImpl taskService;
+    private TaskServiceImpl taskService;
 
     @PostMapping("/tasks")
     public ResponseEntity<Object> createTask(@RequestBody Task task) {

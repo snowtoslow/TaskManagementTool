@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 public class UserController implements UserService {
     @Autowired
-    UserServiceImpl userService = new UserServiceImpl();
+    private UserServiceImpl userService;
 
     @PostMapping("/users")
     public ResponseEntity<Object> createUser(@RequestBody User user) {

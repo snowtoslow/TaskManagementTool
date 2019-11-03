@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 public class ProjectController implements ProjectService {
     @Autowired
-    ProjectServiceImpl projectService = new ProjectServiceImpl();
+    private ProjectServiceImpl projectService;
 
     @PostMapping("/projects")
     public ResponseEntity<Object> createProject(@RequestBody Project project) {
