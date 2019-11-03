@@ -23,6 +23,12 @@ public class User {
     @Column(name = "Speciality")
     private String jobTitle;
 
+    @Column(name = "User_email")
+    private String userEmail;
+
+    @Column(name = "User_Git")
+    private String userGit;
+
 
     public int getUserId() {
         return userId;
@@ -64,4 +70,19 @@ public class User {
         this.jobTitle = jobTitle;
     }
 
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+    public String getUserGit() {
+        return userGit;
+    }
+
+    public void setUserGit(String userGit) {
+        this.userGit = userGit;
+    }
 }
