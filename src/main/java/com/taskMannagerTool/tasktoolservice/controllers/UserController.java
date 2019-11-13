@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 public class UserController implements UserService {
     @Autowired
-    private UserServiceImpl userService;
+    private UserService userService;
 
     @PostMapping("/users")
     public ResponseEntity<Object> createUser(@RequestBody User user) {
@@ -39,5 +39,7 @@ public class UserController implements UserService {
     public void deleteUser(int userId) {
         userService.deleteUser(userId);
     }
+
+
 
 }

@@ -35,7 +35,7 @@ public class ProjectController implements ProjectService {
     }
 
     @DeleteMapping("/projects/{projectId}")
-    public void deleteProject(int projectId) {
+    public void deleteProject(@PathVariable int projectId) {
         projectService.deleteProject(projectId);
     }
 }

@@ -3,12 +3,13 @@ package com.taskMannagerTool.tasktoolservice.models;
 import javax.persistence.*;
 import java.util.List;
 
+
 @Entity
 @Table(name = "users")
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "Id_User")
     public int userId;
 
@@ -21,10 +22,13 @@ public class User {
     @Column(name = "Username")
     private String username;
 
+    @Column(name = "Password")
+    private String userPassword;
+
     @Column(name = "Speciality")
     private String jobTitle;
 
-    @Column(name = "User_email")
+    @Column(name = "User_Email")
     private String userEmail;
 
     @Column(name = "User_Git")
@@ -65,6 +69,14 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getUserPassword() {
+        return userPassword;
+    }
+
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
     }
 
     public String getJobTitle() {

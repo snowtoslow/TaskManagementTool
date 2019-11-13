@@ -1,20 +1,22 @@
 package com.taskMannagerTool.tasktoolservice.controllers;
 
+
+
 import com.taskMannagerTool.tasktoolservice.models.Task;
 import com.taskMannagerTool.tasktoolservice.service.TaskService;
-import com.taskMannagerTool.tasktoolservice.service.TaskServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+
 
 
 @RestController
 public class TaskController implements TaskService {
 
     @Autowired
-    private TaskServiceImpl taskService;
+    private TaskService taskService;
+
 
     @PostMapping("/tasks")
     public ResponseEntity<Object> createTask(@RequestBody Task task) {
@@ -37,7 +39,12 @@ public class TaskController implements TaskService {
     }
 
     @DeleteMapping("/tasks/{taskId}")
-    public void deleteTask(int taskId) {
+    public void deleteTask(@PathVariable int taskId) {
         taskService.deleteTask(taskId);
     }
+
+
+
+
+
 }

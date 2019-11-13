@@ -7,7 +7,7 @@ import java.util.List;
 @Table(name = "projects")
 public class Project {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "Id_Project")
     private int projectId;
 
@@ -18,11 +18,18 @@ public class Project {
     private String projectDescription;
 
     @Column(name = "Project_State")
-    private boolean projectState;
+    @Enumerated(EnumType.STRING)
+    private State projectState;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "Id_Project",referencedColumnName = "Id_Project")
     private List<Task> tasksList;
+
+    @OneToMany(cascade = CascadeType.ALL)//под вопрссом
+    @JoinColumn(name = "Id_Project",referencedColumnName = "Id_Project")
+    private List<User> userList;
+
+
 
     public int getProjectId() {
         return projectId;
@@ -48,11 +55,11 @@ public class Project {
         this.projectDescription = projectDescription;
     }
 
-    public boolean isProjectState() {
+    public State getProjectState() {
         return projectState;
     }
 
-    public void setProjectState(boolean projectState) {
+    public void setProjectState(State projectState) {
         this.projectState = projectState;
     }
 
@@ -62,5 +69,13 @@ public class Project {
 
     public void setTasksList(List<Task> tasksList) {
         this.tasksList = tasksList;
+    }
+
+    public List<User> getUserList() {
+        return userList;
+    }
+
+    public void setUserList(List<User> userList) {
+        this.userList = userList;
     }
 }

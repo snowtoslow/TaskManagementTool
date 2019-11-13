@@ -1,15 +1,22 @@
 package com.taskMannagerTool.tasktoolservice.service;
 
+import com.taskMannagerTool.tasktoolservice.models.Priority;
+import com.taskMannagerTool.tasktoolservice.models.State;
 import com.taskMannagerTool.tasktoolservice.models.Task;
 import com.taskMannagerTool.tasktoolservice.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+
+import static com.taskMannagerTool.tasktoolservice.models.Priority.*;
+import static com.taskMannagerTool.tasktoolservice.models.State.*;
+
 @Service
 public class TaskServiceImpl {
 
@@ -51,6 +58,10 @@ public class TaskServiceImpl {
 
     public void deleteTask(int taskId){
         taskRepository.deleteById(taskId);
+    }
+
+    public  List<Task> getProjectsByParam(Map<String, String> params) {
+        return getProjectsByParam(params);
     }
 
 
