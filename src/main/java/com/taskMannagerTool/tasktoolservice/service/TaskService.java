@@ -1,10 +1,11 @@
 package com.taskMannagerTool.tasktoolservice.service;
 
 
+
 import com.taskMannagerTool.tasktoolservice.models.Task;
 import org.springframework.http.ResponseEntity;
-
 import java.util.List;
+
 
 public interface TaskService{
 
@@ -18,5 +19,6 @@ public interface TaskService{
     ResponseEntity<Object> updateTask(Task task);//U !!!!!пересмотреть в имплементэйшне!!!
 
     void deleteTask(int taskId);//D
+
 
 }

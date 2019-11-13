@@ -50,4 +50,6 @@ public class UserServiceImpl {
     }
 
     public void deleteUser(int userId){ userRepository.deleteById(userId); }
+
+
 }

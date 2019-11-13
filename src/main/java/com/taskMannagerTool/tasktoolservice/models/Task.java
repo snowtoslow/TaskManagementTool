@@ -1,6 +1,7 @@
 package com.taskMannagerTool.tasktoolservice.models;
 
 import javax.persistence.*;
+import java.util.Date;
 
 
 @Entity
@@ -8,7 +9,7 @@ import javax.persistence.*;
 public class Task {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "Id_Task")
     private int taskId;
 
@@ -19,21 +20,23 @@ public class Task {
     private String taskDescription;
 
     @Column(name = "Task_Priority")
+    @Enumerated(EnumType.STRING)
     private Priority taskPriority;
 
     @Column(name = "Task_State")
+    @Enumerated(EnumType.STRING)
     private State taskState;
 
     @Column(name = "Task_StartDate")
-    private String taskStartDate;
+    private Date StartDate;
 
-    @Column(name = "Task_Duedate")
-    private String taskDueDate;
+    @Column(name = "Task_DueDate")
+    private Date DueDate;
 
     @Column(name = "Id_Sender")
     private int senderId;
 
-    @Column(name = "Id_Resiver")
+    @Column(name = "Id_Receiver")
     private int receiverId;
 
 
@@ -82,20 +85,20 @@ public class Task {
         this.taskState = taskState;
     }
 
-    public String getTaskStartDate() {
-        return taskStartDate;
+    public Date getStartDate() {
+        return StartDate;
     }
 
-    public void setTaskStartDate(String taskStartDate) {
-        this.taskStartDate = taskStartDate;
+    public void setStartDate(Date startDate) {
+        StartDate = startDate;
     }
 
-    public String getTaskDueDate() {
-        return taskDueDate;
+    public Date getDueDate() {
+        return DueDate;
     }
 
-    public void setTaskDueDate(String taskDueDate) {
-        this.taskDueDate = taskDueDate;
+    public void setDueDate(Date dueDate) {
+        DueDate = dueDate;
     }
 
     public int getSenderId() {
