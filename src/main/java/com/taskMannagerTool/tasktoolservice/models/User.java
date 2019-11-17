@@ -1,11 +1,16 @@
 package com.taskMannagerTool.tasktoolservice.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
 
 @Entity
-@Table(name = "users")
+@Table(name = "users", uniqueConstraints = {
+        @UniqueConstraint(columnNames = "User_Email")
+})
+
 public class User {
 
     @Id
@@ -23,6 +28,7 @@ public class User {
     private String username;
 
     @Column(name = "Password")
+    @JsonIgnore
     private String userPassword;
 
     @Column(name = "Speciality")
@@ -33,6 +39,13 @@ public class User {
 
     @Column(name = "User_Git")
     private String userGit;
+
+    @Column(name = "User_RegistrationType")
+    @Enumerated(EnumType.STRING)
+    private AuthProvider userTypeOfRegistration;
+
+    private String providerId;
+
 
     @OneToMany(cascade = CascadeType.ALL)//под вопросом
     @JoinColumn(name = "Id_User",referencedColumnName = "Id_User")
@@ -109,5 +122,21 @@ public class User {
 
     public void setTasks(List<Task> tasks) {
         this.tasks = tasks;
+    }
+
+    public AuthProvider getUserTypeOfRegistration() {
+        return userTypeOfRegistration;
+    }
+
+    public void setUserTypeOfRegistration(AuthProvider userTypeOfRegistration) {
+        this.userTypeOfRegistration = userTypeOfRegistration;
+    }
+
+    public String getProviderId() {
+        return providerId;
+    }
+
+    public void setProviderId(String providerId) {
+        this.providerId = providerId;
     }
 }
