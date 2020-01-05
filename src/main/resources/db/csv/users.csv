@@ -1,0 +1,3 @@
+user_id;first_name;last_name;user_name;user_password;user_speciality;user_email;user_role
+1;Vladimir;Leadavschi;snowtoslow;qwerty123;neponiatno;snowtoslow@mail.ru;USER
+2;Catalin;Schiopu;cat;qwerty123;front-end dev;cat@gmail.com;USER

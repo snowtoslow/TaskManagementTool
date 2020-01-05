@@ -1,0 +1,273 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 1
+      author: vova
+      changes:
+        - createTable:
+            tableName: projects
+            columns:
+              - column:
+                  name: project_id
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: project_name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: project_description
+                  type: varchar(250)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: project_state
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: user_id
+                  type: INT
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_name
+                  type: varchar(50)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: user_password
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_speciality
+                  type: varchar(20)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: user_email
+                  type: varchar(50)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: user_role
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+
+        - createTable:
+            tableName: tasks
+            columns:
+              - column:
+                  name: task_id
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: task_name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: task_description
+                  type: varchar(250)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: task_priority
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: task_state
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: start_date
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: due_date
+                  type: datetime
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: sender_id
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: receiver_id
+                  type: INT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: task_title
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+
+
+        - createTable:
+            tableName: user_role
+            columns:
+              - column:
+                  name: user_role
+                  type: varchar(50)
+                  constraints:
+                    primaryKey: true
+
+        - createTable:
+            tableName: state
+            columns:
+              - column:
+                  name: state
+                  type: varchar(50)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+        - createTable:
+            tableName: priority
+            columns:
+              - column:
+                  name: priority
+                  type: varchar(50)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+        - loadData:
+            encoding: UTF-8
+            file: db/csv/priority.csv
+            separator: ;
+            tableName: priority
+
+        - loadData:
+            encoding: UTF-8
+            file: db/csv/state.csv
+            separator: ;
+            tableName: state
+
+        - loadData:
+            encoding: UTF-8
+            file: db/csv/roles.csv
+            separator: ;
+            tableName: user_role
+        - loadData:
+            encoding: UTF-8
+            file: db/csv/projects.csv
+            separator: ;
+            tableName: projects
+        - loadData:
+            encoding: UTF-8
+            file: db/csv/users.csv
+            separator: ;
+            tableName: users
+        - loadData:
+            encoding: UTF-8
+            file: db/csv/tasks.csv
+            separator: ;
+            tableName: tasks
+
+        - addForeignKeyConstraint:
+            baseColumnNames: user_role
+            baseTableName: users
+            constraintName: fk_user_role
+            onDelete: CASCADE
+            onUpdate: RESTRICT
+            referencedColumnNames: user_role
+            referencedTableName: user_role
+            validate: true
+        - addForeignKeyConstraint:
+            baseColumnNames: task_state
+            baseTableName: tasks
+            constraintName: fk_task_state
+            onDelete: CASCADE
+            onUpdate: RESTRICT
+            referencedColumnNames: state
+            referencedTableName: state
+            validate: true
+        - addForeignKeyConstraint:
+            baseColumnNames: task_priority
+            baseTableName: tasks
+            constraintName: fk_task_priority
+            onDelete: CASCADE
+            onUpdate: RESTRICT
+            referencedColumnNames: priority
+            referencedTableName: priority
+            validate: true
+        - addForeignKeyConstraint:
+            baseColumnNames: project_state
+            baseTableName: projects
+            constraintName: fk_project_state
+            onDelete: CASCADE
+            onUpdate: RESTRICT
+            referencedColumnNames: state
+            referencedTableName: state
+            validate: true
+        - addForeignKeyConstraint:
+            baseColumnNames: sender_id
+            baseTableName: tasks
+            constraintName: fk_sender_id
+            onDelete: CASCADE
+            onUpdate: RESTRICT
+            referencedColumnNames: user_id
+            referencedTableName: users
+            validate: true
+        - addForeignKeyConstraint:
+            baseColumnNames: receiver_id
+            baseTableName: tasks
+            constraintName: fk_receiver_id
+            onDelete: CASCADE
+            onUpdate: RESTRICT
+            referencedColumnNames: user_id
+            referencedTableName: users
+            validate: true
+        - createSequence:
+            sequenceName: HIBERNATE_SEQUENCE
+            startValue: 3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
