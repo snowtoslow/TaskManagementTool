@@ -1,42 +1,44 @@
 package com.taskMannagerTool.tasktoolservice.models;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 
 @Entity
-@Table(name = "users")
+@Table(name = "users"/*,schema = "justfortest"*/)
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "Id_User")
+    @Column(name = "user_id")
     public int userId;
 
-    @Column(name = "Name")
+    @Column(name = "first_name")
     private String name;
 
-    @Column(name = "Surname")
+    @Column(name = "last_name")
     private String surname;
 
-    @Column(name = "Username")
+    @Column(name = "user_name")
     private String username;
 
-    @Column(name = "Password")
+    @Column(name = "user_password")
     private String userPassword;
 
-    @Column(name = "Speciality")
-    private String jobTitle;
+    @Column(name = "user_speciality")
+    private String Speciality;
 
-    @Column(name = "User_Email")
+    @Column(name = "user_email")
     private String userEmail;
 
-    @Column(name = "User_Git")
-    private String userGit;
 
-    @OneToMany(cascade = CascadeType.ALL)//под вопросом
-    @JoinColumn(name = "Id_User",referencedColumnName = "Id_User")
-    private List<Task> tasks;
+    @OneToOne//вот тут была боль
+    @JoinColumn(name = "user_role")
+    private Role roles;
+
+
+
+
 
 
     public int getUserId() {
@@ -79,12 +81,12 @@ public class User {
         this.userPassword = userPassword;
     }
 
-    public String getJobTitle() {
-        return jobTitle;
+    public String getSpeciality() {
+        return Speciality;
     }
 
-    public void setJobTitle(String jobTitle) {
-        this.jobTitle = jobTitle;
+    public void setSpeciality(String speciality) {
+        Speciality = speciality;
     }
 
     public String getUserEmail() {
@@ -95,19 +97,11 @@ public class User {
         this.userEmail = userEmail;
     }
 
-    public String getUserGit() {
-        return userGit;
+    public Role getRoles() {
+        return roles;
     }
 
-    public void setUserGit(String userGit) {
-        this.userGit = userGit;
-    }
-
-    public List<Task> getTasks() {
-        return tasks;
-    }
-
-    public void setTasks(List<Task> tasks) {
-        this.tasks = tasks;
+    public void setRoles(Role roles) {
+        this.roles = roles;
     }
 }

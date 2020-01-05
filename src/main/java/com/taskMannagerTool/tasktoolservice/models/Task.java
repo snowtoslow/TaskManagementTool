@@ -2,42 +2,50 @@ package com.taskMannagerTool.tasktoolservice.models;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
-@Table(name = "tasks")
+@Table(name = "tasks"/*,schema = "justfortest"*/)
 public class Task {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "Id_Task")
+    @Column(name = "task_id")
     private int taskId;
 
-    @Column(name = "Task_Name")
+    @Column(name = "task_title")
     private String taskTitle;
 
-    @Column(name = "Task_Description")
+    @Column(name = "task_description")
     private String taskDescription;
 
-    @Column(name = "Task_Priority")
+    @Column(name = "task_priority")
     @Enumerated(EnumType.STRING)
     private Priority taskPriority;
 
-    @Column(name = "Task_State")
+    @Column(name = "task_state")
     @Enumerated(EnumType.STRING)
     private State taskState;
 
-    @Column(name = "Task_StartDate")
+    @Column(name = "start_date")
     private Date StartDate;
 
-    @Column(name = "Task_DueDate")
+    @Column(name = "due_date")
     private Date DueDate;
 
-    @Column(name = "Id_Sender")
-    private int senderId;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "sender_id")
+    private User senderId;
 
-    @Column(name = "Id_Receiver")
-    private int receiverId;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "receiver_id")
+    private User receiverId;
+
+
+
+
+
 
 
     public int getTaskId() {
@@ -101,19 +109,23 @@ public class Task {
         DueDate = dueDate;
     }
 
-    public int getSenderId() {
+    public User getSenderId() {
         return senderId;
     }
 
-    public void setSenderId(int senderId) {
+    public void setSenderId(User senderId) {
         this.senderId = senderId;
     }
 
-    public int getReceiverId() {
+    public User getReceiverId() {
         return receiverId;
     }
 
-    public void setReceiverId(int receiverId) {
+    public void setReceiverId(User receiverId) {
         this.receiverId = receiverId;
     }
+
+
+
+
 }

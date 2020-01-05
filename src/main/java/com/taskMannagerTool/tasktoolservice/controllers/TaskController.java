@@ -4,6 +4,7 @@ package com.taskMannagerTool.tasktoolservice.controllers;
 
 import com.taskMannagerTool.tasktoolservice.models.Task;
 import com.taskMannagerTool.tasktoolservice.service.TaskService;
+import com.taskMannagerTool.tasktoolservice.service.TaskServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,7 @@ import java.util.List;
 public class TaskController implements TaskService {
 
     @Autowired
-    private TaskService taskService;
+    private TaskServiceImpl taskService;
 
 
     @PostMapping("/tasks")

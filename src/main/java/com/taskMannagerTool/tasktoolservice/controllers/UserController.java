@@ -1,7 +1,7 @@
 package com.taskMannagerTool.tasktoolservice.controllers;
 
 import com.taskMannagerTool.tasktoolservice.models.User;
-import com.taskMannagerTool.tasktoolservice.service.UserService;
+import com.taskMannagerTool.tasktoolservice.repository.UserRepository;
 import com.taskMannagerTool.tasktoolservice.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,33 +11,33 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class UserController implements UserService {
+public class UserController extends UserServiceImpl {
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userServiceImpl;
 
     @PostMapping("/users")
     public ResponseEntity<Object> createUser(@RequestBody User user) {
-        return userService.createUser(user);
+        return userServiceImpl.createUser(user);
     }
 
     @GetMapping("/users")
     public List<User> readAllUsers() {
-        return userService.readAllUsers();
+        return userServiceImpl.readAllUsers();
     }
 
     @GetMapping("/users/{userId}")
     public User readAUserById(@PathVariable int userId) {
-        return userService.readAUserById(userId);
+        return userServiceImpl.readAUserById(userId);
     }
 
-    @PutMapping("/users/update")
-    public ResponseEntity<Object> updateUser(User user) {
-        return userService.updateUser(user);
+    @PutMapping("/users/{userId}")
+    public ResponseEntity<Object> updateUser(@RequestBody User user,@PathVariable int userId) {
+        return userServiceImpl.updateUser(user,userId);
     }
 
     @DeleteMapping("/users/{userId}")
     public void deleteUser(int userId) {
-        userService.deleteUser(userId);
+        userServiceImpl.deleteUser(userId);
     }
 
 

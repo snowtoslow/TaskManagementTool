@@ -16,13 +16,15 @@ public class UserServiceImpl {
     @Autowired
     private UserRepository userRepository;
 
-    public ResponseEntity<Object> createUser(User user){//добавить респонс бади
+   /* public ResponseEntity<Object> createUser(User user){//добавить респонс бади
         User savedUser = userRepository.save(user);
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{userId}")
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{user_id}")
                 .build(savedUser.getUserId());
 
+
         return ResponseEntity.created(location).build();
-    }
+    }*/
+
 
 
     public List<User> readAllUsers(){
@@ -39,17 +41,40 @@ public class UserServiceImpl {
     }
 
 
-    public ResponseEntity<Object> updateUser(User user){
+    /*public ResponseEntity<Object> updateUser(User user){
         Optional<User> userOptional = userRepository.findById(user.getUserId());
-
         if(!userOptional.isPresent())
             return ResponseEntity.notFound().build();
-
         userRepository.save(user);
         return ResponseEntity.noContent().build();
+    }*/
+    public void deleteUser(int userId){ userRepository.deleteById(userId); }
+
+
+    public ResponseEntity<Object> createUser(User user) {
+        User savedStudent = userRepository.save(user);
+
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+                .buildAndExpand(savedStudent.getUserId()).toUri();
+
+        return ResponseEntity.created(location).build();
+
     }
 
-    public void deleteUser(int userId){ userRepository.deleteById(userId); }
+
+    public ResponseEntity<Object> updateUser(User user, int id) {
+
+        Optional<User> userOptional = userRepository.findById(id);
+
+        if (!userOptional.isPresent())
+            return ResponseEntity.notFound().build();
+
+        user.setUserId(id);
+
+        userRepository.save(user);
+
+        return ResponseEntity.noContent().build();
+    }
 
 
 }

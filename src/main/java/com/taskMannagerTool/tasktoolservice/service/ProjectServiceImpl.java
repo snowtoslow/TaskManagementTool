@@ -5,7 +5,6 @@ import com.taskMannagerTool.tasktoolservice.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
@@ -13,10 +12,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ProjectServiceImpl {
+public class ProjectServiceImpl implements ProjectService {
 
     @Autowired
-    private ProjectRepository projectRepository;
+    private  ProjectRepository projectRepository;
+
 
 
     public ResponseEntity<Object> createProject( Project project){//добавить респонс бади
@@ -27,7 +27,8 @@ public class ProjectServiceImpl {
         return ResponseEntity.created(location).build();
     }
 
-        public List<Project> readAllProjects(){
+    public List<Project> readAllProjects(){
+
         return projectRepository.findAll();
     }
 
@@ -58,5 +59,6 @@ public class ProjectServiceImpl {
     public void deleteProject( int projectId){
         projectRepository.deleteById(projectId);
     }
+
 
 }

@@ -2,7 +2,7 @@ spring:
   datasource:
     username: forAll
     password: qwerty123
-    url: jdbc:mysql://localhost:3306/taskTool?useSSL=false
+    url: jdbc:mysql://localhost:3306/justfortest
   liquibase:
     change-log: classpath:db/master.xml
     enabled: true
@@ -10,4 +10,4 @@ spring:
     password: ${spring.datasource.password}
     url: ${spring.datasource.url}
   jpa:
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database-platform: org.hibernate.dialect.MySQL5Dialect

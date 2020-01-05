@@ -1,33 +1,39 @@
 package com.taskMannagerTool.tasktoolservice.models;
 
+import javax.jws.soap.SOAPBinding;
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
-@Table(name = "projects")
+@Table(name = "projects"/*,schema = "justfortest"*/)
 public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "Id_Project")
+    @Column(name = "project_id")
     private int projectId;
 
-    @Column(name = "Project_Name")
+    @Column(name = "project_name")
     private String projectName;
 
-    @Column(name = "Project_Description")
+    @Column(name = "project_description")
     private String projectDescription;
 
-    @Column(name = "Project_State")
+    @Column(name = "project_state")
     @Enumerated(EnumType.STRING)
     private State projectState;
 
+
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "Id_Project",referencedColumnName = "Id_Project")
+    @JoinColumn(name = "task_id",referencedColumnName = "project_id")
     private List<Task> tasksList;
 
     @OneToMany(cascade = CascadeType.ALL)//под вопрссом
-    @JoinColumn(name = "Id_Project",referencedColumnName = "Id_Project")
+    @JoinColumn(name = "user_id",referencedColumnName = "project_id")
     private List<User> userList;
+
 
 
 
