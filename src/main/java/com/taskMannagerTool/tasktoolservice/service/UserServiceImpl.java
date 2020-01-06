@@ -11,20 +11,10 @@ import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 @Service
-public class UserServiceImpl {
+public class UserServiceImpl implements UserService{
 
     @Autowired
     private UserRepository userRepository;
-
-   /* public ResponseEntity<Object> createUser(User user){//добавить респонс бади
-        User savedUser = userRepository.save(user);
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{user_id}")
-                .build(savedUser.getUserId());
-
-
-        return ResponseEntity.created(location).build();
-    }*/
-
 
 
     public List<User> readAllUsers(){
@@ -41,13 +31,7 @@ public class UserServiceImpl {
     }
 
 
-    /*public ResponseEntity<Object> updateUser(User user){
-        Optional<User> userOptional = userRepository.findById(user.getUserId());
-        if(!userOptional.isPresent())
-            return ResponseEntity.notFound().build();
-        userRepository.save(user);
-        return ResponseEntity.noContent().build();
-    }*/
+
     public void deleteUser(int userId){ userRepository.deleteById(userId); }
 
 

@@ -3,6 +3,7 @@ package com.taskMannagerTool.tasktoolservice.service;
 import com.taskMannagerTool.tasktoolservice.models.Priority;
 import com.taskMannagerTool.tasktoolservice.models.State;
 import com.taskMannagerTool.tasktoolservice.models.Task;
+import com.taskMannagerTool.tasktoolservice.models.User;
 import com.taskMannagerTool.tasktoolservice.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ import static com.taskMannagerTool.tasktoolservice.models.Priority.*;
 import static com.taskMannagerTool.tasktoolservice.models.State.*;
 
 @Service
-public class TaskServiceImpl {
+public class TaskServiceImpl implements TaskService {
 
     @Autowired
     private TaskRepository taskRepository;
@@ -46,23 +47,26 @@ public class TaskServiceImpl {
     }
 
 
-    public ResponseEntity<Object> updateTask(Task task){
-        Optional<Task> taskOptional = taskRepository.findById(task.getTaskId());
 
-        if(!taskOptional.isPresent())
-            return ResponseEntity.notFound().build();
-
-        taskRepository.save(task);
-        return ResponseEntity.noContent().build();
-    }
 
     public void deleteTask(int taskId){
         taskRepository.deleteById(taskId);
     }
 
-    public  List<Task> getProjectsByParam(Map<String, String> params) {
-        return getProjectsByParam(params);
-    }
 
+
+    public ResponseEntity<Object> updateTask(Task task, int id) {
+
+        Optional<Task> taskOptional = taskRepository.findById(id);
+
+        if (!taskOptional.isPresent())
+            return ResponseEntity.notFound().build();
+
+        task.setTaskId(id);
+
+        taskRepository.save(task);
+
+        return ResponseEntity.noContent().build();
+    }
 
 }

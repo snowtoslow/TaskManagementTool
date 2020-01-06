@@ -16,7 +16,7 @@ public interface TaskService{
 
     Task readATaskById(int taskId);//R
 
-    ResponseEntity<Object> updateTask(Task task);//U !!!!!пересмотреть в имплементэйшне!!!
+    ResponseEntity<Object> updateTask(Task task,int id);//U !!!!!пересмотреть в имплементэйшне!!!
 
     void deleteTask(int taskId);//D
 

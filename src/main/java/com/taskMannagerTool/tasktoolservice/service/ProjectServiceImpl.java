@@ -1,6 +1,7 @@
 package com.taskMannagerTool.tasktoolservice.service;
 
 import com.taskMannagerTool.tasktoolservice.models.Project;
+import com.taskMannagerTool.tasktoolservice.models.Task;
 import com.taskMannagerTool.tasktoolservice.repository.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -44,16 +45,19 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
 
+   public ResponseEntity<Object> updateProject(Project project, int id) {
 
-    public ResponseEntity<Object> updateProject( Project project){
-        Optional<Project>  projectOptional = projectRepository.findById(project.getProjectId());
+       Optional<Project> taskOptional = projectRepository.findById(id);
 
-        if(!projectOptional.isPresent())
-            return ResponseEntity.notFound().build();
+       if (!taskOptional.isPresent())
+           return ResponseEntity.notFound().build();
 
-        projectRepository.save(project);
-        return ResponseEntity.noContent().build();
-    }
+       project.setProjectId(id);
+
+       projectRepository.save(project);
+
+       return ResponseEntity.noContent().build();
+   }
 
 
     public void deleteProject( int projectId){

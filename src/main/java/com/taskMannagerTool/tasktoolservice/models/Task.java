@@ -34,11 +34,11 @@ public class Task {
     @Column(name = "due_date")
     private Date DueDate;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "sender_id")
     private User senderId;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "receiver_id")
     private User receiverId;
 

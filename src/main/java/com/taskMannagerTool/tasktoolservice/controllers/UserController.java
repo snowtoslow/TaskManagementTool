@@ -30,7 +30,7 @@ public class UserController extends UserServiceImpl {
         return userServiceImpl.readAUserById(userId);
     }
 
-    @PutMapping("/users/{userId}")
+    @PutMapping("/users/update/{userId}")//добавил апдэйт если что можно удалять
     public ResponseEntity<Object> updateUser(@RequestBody User user,@PathVariable int userId) {
         return userServiceImpl.updateUser(user,userId);
     }

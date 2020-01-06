@@ -3,7 +3,6 @@ package com.taskMannagerTool.tasktoolservice.controllers;
 
 
 import com.taskMannagerTool.tasktoolservice.models.Task;
-import com.taskMannagerTool.tasktoolservice.service.TaskService;
 import com.taskMannagerTool.tasktoolservice.service.TaskServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,35 +12,37 @@ import java.util.List;
 
 
 @RestController
-public class TaskController implements TaskService {
+public class TaskController extends TaskServiceImpl {
 
     @Autowired
-    private TaskServiceImpl taskService;
+    private TaskServiceImpl taskServiceImpl;
 
 
     @PostMapping("/tasks")
     public ResponseEntity<Object> createTask(@RequestBody Task task) {
-        return taskService.createTask(task);
+        return taskServiceImpl.createTask(task);
     }
 
     @GetMapping("/tasks")
     public List<Task> readAllTasks() {
-        return taskService.readAllTasks();
+        return taskServiceImpl.readAllTasks();
     }
 
     @GetMapping("/tasks/{taskId}")
     public Task readATaskById(@PathVariable int taskId) {
-        return taskService.readATaskById(taskId);
+        return taskServiceImpl.readATaskById(taskId);
     }
 
-    @PutMapping("/tasks/update")
-    public ResponseEntity<Object> updateTask(@RequestBody Task task) {
-        return taskService.updateTask(task);
+
+
+    @PutMapping("/tasks/update/{taskId}")
+    public ResponseEntity<Object> updateTask(@RequestBody Task task,@PathVariable int taskId) {
+        return taskServiceImpl.updateTask(task,taskId);
     }
 
     @DeleteMapping("/tasks/{taskId}")
     public void deleteTask(@PathVariable int taskId) {
-        taskService.deleteTask(taskId);
+        taskServiceImpl.deleteTask(taskId);
     }
 
 

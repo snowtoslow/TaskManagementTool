@@ -2,8 +2,6 @@ package com.taskMannagerTool.tasktoolservice.controllers;
 
 import com.taskMannagerTool.tasktoolservice.models.Project;
 import com.taskMannagerTool.tasktoolservice.service.ProjectServiceImpl;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,9 +35,9 @@ public class ProjectController extends ProjectServiceImpl {
         return projectServiceImpl.readAProjectById(projectId);
     }
 
-    @PutMapping("/projects/update")
-    public ResponseEntity<Object> updateProject(@RequestBody Project project) {
-        return projectServiceImpl.updateProject(project);
+    @PutMapping("/projects/update/{projectId}")
+    public ResponseEntity<Object> updateProject(@RequestBody Project project,@PathVariable int projectId) {
+        return projectServiceImpl.updateProject(project,projectId);
     }
 
     @DeleteMapping("/projects/{projectId}")
