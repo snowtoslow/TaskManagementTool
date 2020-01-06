@@ -36,7 +36,7 @@ public class UserController extends UserServiceImpl {
     }
 
     @DeleteMapping("/users/{userId}")
-    public void deleteUser(int userId) {
+    public void deleteUser(@PathVariable int userId) {
         userServiceImpl.deleteUser(userId);
     }
 
