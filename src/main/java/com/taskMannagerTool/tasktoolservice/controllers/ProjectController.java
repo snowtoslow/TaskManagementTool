@@ -40,7 +40,7 @@ public class ProjectController extends ProjectServiceImpl {
         return projectServiceImpl.updateProject(project,projectId);
     }
 
-    @DeleteMapping("/projects/{projectId}")
+    @DeleteMapping("/projects/delete/{projectId}")
     public void deleteProject(@PathVariable int projectId) {
         projectServiceImpl.deleteProject(projectId);
     }

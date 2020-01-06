@@ -40,7 +40,7 @@ public class TaskController extends TaskServiceImpl {
         return taskServiceImpl.updateTask(task,taskId);
     }
 
-    @DeleteMapping("/tasks/{taskId}")
+    @DeleteMapping("/tasks/delete/{taskId}")
     public void deleteTask(@PathVariable int taskId) {
         taskServiceImpl.deleteTask(taskId);
     }
