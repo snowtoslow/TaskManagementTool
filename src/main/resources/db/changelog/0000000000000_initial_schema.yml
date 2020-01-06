@@ -86,11 +86,6 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: task_name
-                  type: varchar(50)
-                  constraints:
-                    nullable: false
-              - column:
                   name: task_description
                   type: varchar(250)
                   constraints:
