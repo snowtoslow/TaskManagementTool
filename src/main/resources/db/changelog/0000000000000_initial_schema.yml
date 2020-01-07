@@ -53,7 +53,7 @@ databaseChangeLog:
                   name: user_name
                   type: varchar(50)
                   constraints:
-                    nullable: true
+                    nullable: false
               - column:
                   name: user_password
                   type: varchar(100)
@@ -68,7 +68,7 @@ databaseChangeLog:
                   name: user_email
                   type: varchar(50)
                   constraints:
-                    nullable: true
+                    nullable: false
               - column:
                   name: user_role
                   type: varchar(50)
