@@ -1,0 +1,449 @@
+{
+	"info": {
+		"_postman_id": "b885b7f0-e427-484a-bc4f-7fdd25a54d49",
+		"name": "TaskToolCollection",
+		"description": "Collection of all methods which is implemented in TaskToolProject",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "UserRequests",
+			"item": [
+				{
+					"name": "Get All users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users"
+							]
+						},
+						"description": "Get list of all users using method get;\n\nlink:localhost:8080/users"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a user by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/users/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"2"
+							]
+						},
+						"description": "get user by id using method GET\n\n*link:localhost:8080/users/{here user id(ex:1,2...)}\n "
+					},
+					"response": []
+				},
+				{
+					"name": "Create user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Kate\",\n    \"surname\": \"Kotelnik\",\n    \"username\": \"Kate\",\n    \"userPassword\": \"12345678\",\n    \"userEmail\": \"kate@gmail.com\",\n    \"roles\": {\n        \"userRole\": \"USER\"\n    },\n    \"speciality\": \"front-end dev\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users"
+							]
+						},
+						"description": "Create a user using method POST"
+					},
+					"response": []
+				},
+				{
+					"name": "Update user information",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"KatelovaCat\",\n    \"surname\": \"KotelnikSchipu\",\n    \"username\": \"KateCat\",\n    \"userPassword\": \"12345678\",\n    \"userEmail\": \"kateCat@gmail.com\",\n    \"roles\": {\n        \"userRole\": \"USER\"\n    },\n    \"speciality\": \"front-end dev\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/users/update/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"update",
+								"3"
+							]
+						},
+						"description": "Update user information using method PUT\n\nlink:localhost:8080/users/update/{userId(ex:1,2,3....)}"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user by ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/users/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"3"
+							]
+						},
+						"description": "delete user using method DELETE\n\nlink:localhost:8080/users/delete/{userId(ex:1,2,3....)}"
+					},
+					"response": []
+				}
+			],
+			"description": "Request for USER entity",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "bf97d8e1-ec94-45fb-9a14-9bef69bd98a1",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "bdaaff4f-a88a-4424-96ab-a06c3d87e100",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "ProjectRequests",
+			"item": [
+				{
+					"name": "Get all projects",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/projects",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"projects"
+							]
+						},
+						"description": "Get list of all projectss using method get;\n\nlink:localhost:8080/projects"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a project by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/projects/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"projects",
+								"1"
+							]
+						},
+						"description": "get project by id using method GET\n\n*link:localhost:8080/projects/{here project id(ex:1,2...)}"
+					},
+					"response": []
+				},
+				{
+					"name": "Create project",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"projectName\": \"Food application\",\n    \"projectDescription\": \"We are goona create a application which will help a customer to made order \",\n    \"projectState\": \"IN_PROGRESS\"\n}    "
+						},
+						"url": {
+							"raw": "localhost:8080/projects",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"projects"
+							]
+						},
+						"description": "Create a project using method POST"
+					},
+					"response": []
+				},
+				{
+					"name": "Update project information",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"projectName\": \"Food application FAF\",\n    \"projectDescription\": \"Create a application which will help a customer to made order \",\n    \"projectState\": \"IN_PROGRESS\"\n} "
+						},
+						"url": {
+							"raw": "localhost:8080/projects/update/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"projects",
+								"update",
+								"3"
+							]
+						},
+						"description": "Update project information using method PUT\n\nlink:localhost:8080/projects/update/{projectId(ex:1,2,3....)}"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete project by ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/projects/delete/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"projects",
+								"delete",
+								"3"
+							]
+						},
+						"description": "delete project using method DELETE\n\nlink:localhost:8080/projectss/delete/{projectId(ex:1,2,3....)}"
+					},
+					"response": []
+				}
+			],
+			"description": "Request for PROJECT entity\n",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "fe1dbe3b-854a-4c25-8ca0-6bc44093b87a",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "802f1ead-1b84-4941-80c9-93fe7c6e5463",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "TaskRequests",
+			"item": [
+				{
+					"name": "Get all tasks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						},
+						"description": "Get list of all projectss using method get;\n\nlink:localhost:8080/tasks"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a task by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/tasks/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tasks",
+								"1"
+							]
+						},
+						"description": "get task by id using method GET\n\n*link:localhost:8080/taskss/{here task id(ex:1,2...)}"
+					},
+					"response": []
+				},
+				{
+					"name": "Create task",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"taskTitle\": \"Sa inshepem bleadi odata ceva sa fecm\",\n    \"taskDescription\": \"Tanya,Jenya,Margo,Andriuxa se aseaza si icnep ceva sa faca\",\n    \"taskPriority\": \"MAJOR\",\n    \"taskState\": \"IN_PROGRESS\",\n    \"senderId\": {\n        \"userId\": 2\n    },\n    \"receiverId\": {\n        \"userId\": 1\n    },\n    \"startDate\": \"2019-01-03T06:45:00.000+0000\",\n    \"dueDate\": \"2019-01-06T06:45:00.000+0000\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/tasks",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tasks"
+							]
+						},
+						"description": "Create a task using method POST"
+					},
+					"response": []
+				},
+				{
+					"name": "Update project information",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"taskTitle\": \"Sa inshepem bleadi odata ceva sa facem\",\n    \"taskDescription\": \"Tanya,Jenya,Margo,Andriuxa se aseaza si incep ceva sa faca\",\n    \"taskPriority\": \"MAJOR\",\n    \"taskState\": \"IN_PROGRESS\",\n    \"senderId\": {\n        \"userId\": 2\n    },\n    \"receiverId\": {\n        \"userId\": 1\n    },\n    \"startDate\": \"2019-01-03T06:45:00.000+0000\",\n    \"dueDate\": \"2019-01-06T06:45:00.000+0000\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/tasks/update/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tasks",
+								"update",
+								"3"
+							]
+						},
+						"description": "Update project information using method PUT\n\nlink:localhost:8080/tasks/update/{taskId(ex:1,2,3....)}"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete task by ID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/tasks/delete/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tasks",
+								"delete",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Request for TASK entity",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "9f79d9f6-b734-4933-8bff-dcc896543c3d",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "c897afe6-3a7e-40d6-a49c-cacc7b48048b",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
