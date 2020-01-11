@@ -1,7 +1,7 @@
 package com.taskMannagerTool.tasktoolservice.controllers;
 
 import com.taskMannagerTool.tasktoolservice.models.Project;
-import com.taskMannagerTool.tasktoolservice.service.ProjectServiceImpl;
+import com.taskMannagerTool.tasktoolservice.service.serviceImpl.ProjectServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,10 +13,6 @@ import java.util.List;
 public class ProjectController extends ProjectServiceImpl {
     @Autowired
     private ProjectServiceImpl projectServiceImpl;
-
-
-
-
 
     @PostMapping("/projects")
     public ResponseEntity<Object> createProject(@RequestBody Project project) {

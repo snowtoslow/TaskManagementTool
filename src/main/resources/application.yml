@@ -10,4 +10,11 @@ spring:
     active: dev2
 
 
+jwt:
+  token:
+    secret: secret-key
+
+
+
+
 

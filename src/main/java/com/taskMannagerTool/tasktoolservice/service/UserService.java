@@ -1,13 +1,9 @@
 package com.taskMannagerTool.tasktoolservice.service;
 
 import com.taskMannagerTool.tasktoolservice.models.User;
-import com.taskMannagerTool.tasktoolservice.models.domain.UserDTO;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 
-import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 public interface UserService {
 
@@ -24,7 +20,7 @@ public interface UserService {
 
     User findUserByUsername(String username);
 
-    ResponseEntity<User> registration(UserDTO userDTO, BindingResult bindingResult);
+
 
 
 }

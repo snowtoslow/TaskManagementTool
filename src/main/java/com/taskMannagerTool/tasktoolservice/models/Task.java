@@ -2,6 +2,9 @@ package com.taskMannagerTool.tasktoolservice.models;
 
 
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -30,8 +33,10 @@ public class Task {
     @Enumerated(EnumType.STRING)
     private State taskState;
 
+    @CreatedDate
     @Column(name = "start_date")
     private Date StartDate;
+
 
     @Column(name = "due_date")
     private Date DueDate;

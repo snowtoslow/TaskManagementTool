@@ -3,7 +3,7 @@ package com.taskMannagerTool.tasktoolservice.controllers;
 
 
 import com.taskMannagerTool.tasktoolservice.models.Task;
-import com.taskMannagerTool.tasktoolservice.service.TaskServiceImpl;
+import com.taskMannagerTool.tasktoolservice.service.serviceImpl.TaskServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

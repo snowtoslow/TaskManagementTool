@@ -1,10 +1,11 @@
-package com.taskMannagerTool.tasktoolservice.service;
+package com.taskMannagerTool.tasktoolservice.service.serviceImpl;
 
 import com.taskMannagerTool.tasktoolservice.models.Priority;
 import com.taskMannagerTool.tasktoolservice.models.State;
 import com.taskMannagerTool.tasktoolservice.models.Task;
 import com.taskMannagerTool.tasktoolservice.models.User;
 import com.taskMannagerTool.tasktoolservice.repository.TaskRepository;
+import com.taskMannagerTool.tasktoolservice.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
