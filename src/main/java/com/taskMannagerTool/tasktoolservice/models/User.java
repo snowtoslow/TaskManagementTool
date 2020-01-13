@@ -1,6 +1,7 @@
 package com.taskMannagerTool.tasktoolservice.models;
 
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import javax.persistence.*;
@@ -40,6 +41,10 @@ public class User {
     @JoinColumn(name = "user_role")
     private Role roles;
 
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
     public int getUserId() {
         return userId;
     }
@@ -77,7 +82,7 @@ public class User {
     }
 
     public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
+        this.userPassword = passwordEncoder().encode(userPassword);
     }
 
     public String getSpeciality() {
