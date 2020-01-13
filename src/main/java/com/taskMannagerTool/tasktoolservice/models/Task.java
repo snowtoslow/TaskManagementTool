@@ -3,8 +3,10 @@ package com.taskMannagerTool.tasktoolservice.models;
 
 
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -36,8 +38,10 @@ public class Task {
     @Enumerated(EnumType.STRING)
     private State taskState;
 
-    @CreatedDate
+
     @Column(name = "start_date")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @CreationTimestamp
     private Date StartDate;
 
 
@@ -57,6 +61,8 @@ public class Task {
     @OneToMany
     @JoinColumn(name = "task_id")
     private List<Comment> comments;
+
+
 
 
 

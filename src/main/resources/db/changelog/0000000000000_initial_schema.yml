@@ -102,7 +102,7 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: start_date
-                  type: datetime
+                  type: TIMESTAMP WITHOUT TIME ZONE
                   constraints:
                     nullable: false
               - column:
