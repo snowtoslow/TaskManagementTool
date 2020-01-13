@@ -2,16 +2,19 @@ package com.taskMannagerTool.tasktoolservice.models;
 
 
 
+import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.util.Date;
-
+import java.util.List;
+import java.util.Set;
 
 
 @Entity
 @Table(name = "tasks"/*,schema = "justfortest"*/)
+@Data
 public class Task {
 
     @Id
@@ -51,86 +54,11 @@ public class Task {
 
 
 
+    @OneToMany
+    @JoinColumn(name = "task_id")
+    private List<Comment> comments;
 
 
-
-
-    public int getTaskId() {
-        return taskId;
-    }
-
-    public void setTaskTd(int taskTd) {
-        this.taskId = taskTd;
-    }
-
-    public String getTaskTitle() {
-        return taskTitle;
-    }
-
-    public void setTaskTitle(String taskTitle) {
-        this.taskTitle = taskTitle;
-    }
-
-
-    public String getTaskDescription() {
-        return taskDescription;
-    }
-
-    public void setTaskDescription(String taskDescription) {
-        this.taskDescription = taskDescription;
-    }
-
-    public Priority getTaskPriority() {
-        return taskPriority;
-    }
-
-    public void setTaskPriority(Priority taskPriority) {
-        this.taskPriority = taskPriority;
-    }
-
-    public void setTaskId(int taskId) {
-        this.taskId = taskId;
-    }
-
-    public State getTaskState() {
-        return taskState;
-    }
-
-    public void setTaskState(State taskState) {
-        this.taskState = taskState;
-    }
-
-    public Date getStartDate() {
-        return StartDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        StartDate = startDate;
-    }
-
-    public Date getDueDate() {
-        return DueDate;
-    }
-
-    public void setDueDate(Date dueDate) {
-        DueDate = dueDate;
-    }
-
-    public User getSenderId() {
-        return senderId;
-    }
-
-    public void setSenderId(User senderId) {
-        this.senderId = senderId;
-    }
-
-    public User getReceiverId() {
-        return receiverId;
-    }
-
-    public void setReceiverId(User receiverId) {
-        this.receiverId = receiverId;
-    }
 
 
 

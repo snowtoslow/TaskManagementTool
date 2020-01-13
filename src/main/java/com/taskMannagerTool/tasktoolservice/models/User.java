@@ -1,19 +1,15 @@
 package com.taskMannagerTool.tasktoolservice.models;
 
-import lombok.Data;
-import net.minidev.json.annotate.JsonIgnore;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Component;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 import javax.persistence.*;
-import java.util.Collection;
+
 
 
 @Entity
 @Table(name = "users"/*,schema = "justfortest"*/)
 @Component
-@Data
 public class User {
 
     @Id
@@ -44,4 +40,67 @@ public class User {
     @JoinColumn(name = "user_role")
     private Role roles;
 
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getUserPassword() {
+        return userPassword;
+    }
+
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
+    }
+
+    public String getSpeciality() {
+        return Speciality;
+    }
+
+    public void setSpeciality(String speciality) {
+        Speciality = speciality;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+    public Role getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Role roles) {
+        this.roles = roles;
+    }
 }
