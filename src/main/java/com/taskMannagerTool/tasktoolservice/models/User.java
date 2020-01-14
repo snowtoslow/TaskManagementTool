@@ -1,6 +1,8 @@
 package com.taskMannagerTool.tasktoolservice.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -16,6 +18,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
+    @JsonIgnore
     public int userId;
 
     @Column(name = "first_name")
@@ -28,6 +31,7 @@ public class User {
     private String username;
 
     @Column(name = "user_password")
+    @JsonIgnore
     private String userPassword;
 
     @Column(name = "user_speciality")
@@ -39,16 +43,18 @@ public class User {
 
     @OneToOne//вот тут была боль
     @JoinColumn(name = "user_role")
+    @JsonIgnore
     private Role roles;
 
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    @JsonIgnore
     public int getUserId() {
         return userId;
     }
-
+    @JsonProperty
     public void setUserId(int userId) {
         this.userId = userId;
     }
@@ -77,10 +83,12 @@ public class User {
         this.username = username;
     }
 
+    @JsonIgnore
     public String getUserPassword() {
         return userPassword;
     }
 
+    @JsonProperty
     public void setUserPassword(String userPassword) {
         this.userPassword = passwordEncoder().encode(userPassword);
     }
@@ -100,11 +108,11 @@ public class User {
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
     }
-
+    @JsonIgnore
     public Role getRoles() {
         return roles;
     }
-
+    @JsonProperty
     public void setRoles(Role roles) {
         this.roles = roles;
     }

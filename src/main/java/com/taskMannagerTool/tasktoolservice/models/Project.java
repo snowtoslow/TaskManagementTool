@@ -1,5 +1,8 @@
 package com.taskMannagerTool.tasktoolservice.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.jws.soap.SOAPBinding;
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -13,6 +16,7 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "project_id")
+    @JsonIgnore
     private int projectId;
 
     @Column(name = "project_name")
@@ -36,11 +40,11 @@ public class Project {
 
 
 
-
+    @JsonIgnore
     public int getProjectId() {
         return projectId;
     }
-
+    @JsonProperty
     public void setProjectId(int projectId) {
         this.projectId = projectId;
     }
