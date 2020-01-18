@@ -105,12 +105,12 @@ public class Task {
         this.taskState = taskState;
     }
 
-    /*@JsonIgnore*/
+    @JsonIgnore
     public Date getStartDate() {
         return StartDate;
     }
 
-    /*@JsonProperty*/
+    @JsonProperty
     public void setStartDate(Date startDate) {
         StartDate = startDate;
     }
@@ -123,12 +123,12 @@ public class Task {
         DueDate = dueDate;
     }
 
-    /*@JsonIgnore*/
+    @JsonIgnore
     public User getSenderId() {
         return senderId;
     }
 
-    /*@JsonIgnore*/
+    @JsonIgnore
     public void setSenderId(User senderId) {
         this.senderId = senderId;
 

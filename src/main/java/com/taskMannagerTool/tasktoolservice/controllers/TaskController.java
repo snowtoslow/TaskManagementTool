@@ -38,8 +38,8 @@ public class TaskController extends TaskServiceImpl {
 
 
     @PutMapping("/tasks/update/{taskId}")
-    public ResponseEntity<Object> updateTask(@RequestBody Task task,@PathVariable int taskId) {
-        return taskServiceImpl.updateTask(task,taskId);
+    public ResponseEntity<Object> updateTask(@RequestBody Task task,@PathVariable int taskId,Principal principal) {
+        return taskServiceImpl.updateTask(task,taskId,principal);
     }
 
     @DeleteMapping("/tasks/delete/{taskId}")

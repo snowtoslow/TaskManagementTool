@@ -32,6 +32,10 @@ public class TaskServiceImpl implements TaskService {
 
 
 
+
+
+
+
     public ResponseEntity<Object> createTask(Task task,Principal principal){//добавить респонс бади
         task.setSenderId(userRepository.findUserByUsername(principal.getName()));
         Task savedTask = taskRepository.save(task);
@@ -64,7 +68,7 @@ public class TaskServiceImpl implements TaskService {
 
 
 
-    public ResponseEntity<Object> updateTask(Task task, int id) {
+    public ResponseEntity<Object> updateTask(Task task, int id,Principal principal) {
 
         Optional<Task> taskOptional = taskRepository.findById(id);
 
@@ -72,6 +76,8 @@ public class TaskServiceImpl implements TaskService {
             return ResponseEntity.notFound().build();
 
         task.setTaskId(id);
+        task.setSenderId(userRepository.findUserByUsername(principal.getName()));
+        task.setStartDate(task.getStartDate());
 
         taskRepository.save(task);
 
@@ -80,7 +86,7 @@ public class TaskServiceImpl implements TaskService {
 
 
     public List<Task> getTaskByReceiverId(int id){
-        String query = "SELECT * FROM public.tasks WHERE public.tasks.sender_id = ?";
+        String query = "SELECT * FROM public.tasks WHERE public.tasks.receiver_id = ?";
 
         return jdbcTemplate.queryForObject(query, new Object[]{id}, List.class);
     }

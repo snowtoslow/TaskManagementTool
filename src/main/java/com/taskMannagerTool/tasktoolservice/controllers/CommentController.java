@@ -53,6 +53,11 @@ public class CommentController extends CommentServiceImpl {
         return commentServiceImpl.findAllComments();
     }
 
+    @GetMapping("/comments/{id}/task")
+    public List<Comment> getCommentByTaskId(@PathVariable int id){
+        return commentServiceImpl.getCommentByTaskId(id);
+    }
+
 
 
 

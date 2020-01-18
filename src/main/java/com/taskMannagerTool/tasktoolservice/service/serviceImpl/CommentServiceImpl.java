@@ -64,13 +64,16 @@ public class CommentServiceImpl implements CommentService {
        return commentRepository.findAll();
    }
 
-    public int getTaskIdByCommentId(int id){
-        String sql = "SELECT public.comments.task_id FROM public.comments WHERE public.comments.comment_id = ?";
-
-         return jdbcTemplate.queryForObject(sql, new Object[]{id}, Integer.class);
-    }
-
     //get comments by taskID;
+
+    public List<Comment> getCommentByTaskId(int id){
+
+        String  query = "SELECT * FROM public.comments WHERE public.comments.task_id = ?";
+        log.info("COMMENTS:{}",jdbcTemplate.queryForObject(query, new Object[]{id}, List.class));
+
+        return jdbcTemplate.queryForObject(query, new Object[]{id}, List.class);
+
+    }
 
 
 
