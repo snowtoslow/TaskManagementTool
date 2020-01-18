@@ -13,7 +13,13 @@
 					"name": "Get All users",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer ",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "localhost:8080/users",
 							"host": [
@@ -32,7 +38,13 @@
 					"name": "Get a user by ID",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzbm93dG9zbG93IiwiZXhwIjoxNTc4OTE5Nzc0LCJpYXQiOjE1Nzg5MDE3NzR9.dEYMCaKYZDgXq4xNjXz5vQ3iOc_LOhBjLiZRM2aIAczT9QR9yKaiPZHTTeTxShbNP23Vc_2wwPD6BU9MFydd3g",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "localhost:8080/users/2",
 							"host": [
@@ -49,35 +61,6 @@
 					"response": []
 				},
 				{
-					"name": "Create user",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\": \"Kate\",\n    \"surname\": \"Kotelnik\",\n    \"username\": \"Kate\",\n    \"userPassword\": \"12345678\",\n    \"userEmail\": \"kate@gmail.com\",\n    \"roles\": {\n        \"userRole\": \"USER\"\n    },\n    \"speciality\": \"front-end dev\"\n}"
-						},
-						"url": {
-							"raw": "localhost:8080/users",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"users"
-							]
-						},
-						"description": "Create a user using method POST"
-					},
-					"response": []
-				},
-				{
 					"name": "Update user information",
 					"request": {
 						"method": "PUT",
@@ -85,6 +68,11 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzbm93dG9zbG93IiwiZXhwIjoxNTc4OTE5Nzc0LCJpYXQiOjE1Nzg5MDE3NzR9.dEYMCaKYZDgXq4xNjXz5vQ3iOc_LOhBjLiZRM2aIAczT9QR9yKaiPZHTTeTxShbNP23Vc_2wwPD6BU9MFydd3g",
 								"type": "text"
 							}
 						],
@@ -112,7 +100,13 @@
 					"name": "Delete user by ID",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzbm93dG9zbG93IiwiZXhwIjoxNTc4OTE5Nzc0LCJpYXQiOjE1Nzg5MDE3NzR9.dEYMCaKYZDgXq4xNjXz5vQ3iOc_LOhBjLiZRM2aIAczT9QR9yKaiPZHTTeTxShbNP23Vc_2wwPD6BU9MFydd3g",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "localhost:8080/users/3",
 							"host": [
@@ -125,6 +119,46 @@
 							]
 						},
 						"description": "delete user using method DELETE\n\nlink:localhost:8080/users/delete/{userId(ex:1,2,3....)}"
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzbm93dG9zbG93IiwiZXhwIjoxNTc5MjExOTcwLCJpYXQiOjE1NzkxOTM5NzB9.9wVMPDt6Tm_rkPsK4OVZV820925GWB44DIEIgKDj9DwJAH08MQdZ4t-Uqlxr2x4iCsKqbTd5fmpieem4EU3xFA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Kate\",\n    \"surname\": \"Kotelnic\",\n    \"username\": \"kate1\",\n    \"userPassword\": \"123456789\",\n    \"userEmail\": \"kate@mail.ru\",\n    \"speciality\": \"front-end dev\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/registration",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"registration"
+							]
+						},
+						"description": "get user by id using method GET\n\n*link:localhost:8080/registration"
 					},
 					"response": []
 				}
@@ -161,7 +195,13 @@
 					"name": "Get all projects",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzbm93dG9zbG93IiwiZXhwIjoxNTc4OTE5Nzc0LCJpYXQiOjE1Nzg5MDE3NzR9.dEYMCaKYZDgXq4xNjXz5vQ3iOc_LOhBjLiZRM2aIAczT9QR9yKaiPZHTTeTxShbNP23Vc_2wwPD6BU9MFydd3g",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "localhost:8080/projects",
 							"host": [
@@ -180,7 +220,13 @@
 					"name": "Get a project by ID",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzbm93dG9zbG93IiwiZXhwIjoxNTc4OTE5Nzc0LCJpYXQiOjE1Nzg5MDE3NzR9.dEYMCaKYZDgXq4xNjXz5vQ3iOc_LOhBjLiZRM2aIAczT9QR9yKaiPZHTTeTxShbNP23Vc_2wwPD6BU9MFydd3g",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "localhost:8080/projects/1",
 							"host": [
@@ -190,6 +236,13 @@
 							"path": [
 								"projects",
 								"1"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
 							]
 						},
 						"description": "get project by id using method GET\n\n*link:localhost:8080/projects/{here project id(ex:1,2...)}"
@@ -204,6 +257,11 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzbm93dG9zbG93IiwiZXhwIjoxNTc4OTE5Nzc0LCJpYXQiOjE1Nzg5MDE3NzR9.dEYMCaKYZDgXq4xNjXz5vQ3iOc_LOhBjLiZRM2aIAczT9QR9yKaiPZHTTeTxShbNP23Vc_2wwPD6BU9MFydd3g",
 								"type": "text"
 							}
 						],
@@ -234,6 +292,11 @@
 								"key": "Content-Type",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzbm93dG9zbG93IiwiZXhwIjoxNTc4OTE5Nzc0LCJpYXQiOjE1Nzg5MDE3NzR9.dEYMCaKYZDgXq4xNjXz5vQ3iOc_LOhBjLiZRM2aIAczT9QR9yKaiPZHTTeTxShbNP23Vc_2wwPD6BU9MFydd3g",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -260,7 +323,13 @@
 					"name": "Delete project by ID",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzbm93dG9zbG93IiwiZXhwIjoxNTc4OTE5Nzc0LCJpYXQiOjE1Nzg5MDE3NzR9.dEYMCaKYZDgXq4xNjXz5vQ3iOc_LOhBjLiZRM2aIAczT9QR9yKaiPZHTTeTxShbNP23Vc_2wwPD6BU9MFydd3g",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "localhost:8080/projects/delete/3",
 							"host": [
@@ -310,9 +379,22 @@
 					"name": "Get all tasks",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzbm93dG9zbG93IiwiZXhwIjoxNTc4OTE5Nzc0LCJpYXQiOjE1Nzg5MDE3NzR9.dEYMCaKYZDgXq4xNjXz5vQ3iOc_LOhBjLiZRM2aIAczT9QR9yKaiPZHTTeTxShbNP23Vc_2wwPD6BU9MFydd3g",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": ""
+							"raw": "localhost:8080/tasks",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tasks"
+							]
 						},
 						"description": "Get list of all projectss using method get;\n\nlink:localhost:8080/tasks"
 					},
@@ -322,7 +404,13 @@
 					"name": "Get a task by ID",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzbm93dG9zbG93IiwiZXhwIjoxNTc4OTE5Nzc0LCJpYXQiOjE1Nzg5MDE3NzR9.dEYMCaKYZDgXq4xNjXz5vQ3iOc_LOhBjLiZRM2aIAczT9QR9yKaiPZHTTeTxShbNP23Vc_2wwPD6BU9MFydd3g",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "localhost:8080/tasks/1",
 							"host": [
@@ -347,11 +435,16 @@
 								"key": "Content-Type",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzbm93dG9zbG93IiwiZXhwIjoxNTc5MzY2MDA4LCJpYXQiOjE1NzkzNDgwMDh9.8VsQioWqoWJvO_J9GtDzhM6sKwwe_QcRTRnVVPt13QIjznNuZYY1yVQmPuHsAUETfMfbOs3OoB8dGRcdyhI7wA",
+								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"taskTitle\": \"Sa inshepem bleadi odata ceva sa fecm\",\n    \"taskDescription\": \"Tanya,Jenya,Margo,Andriuxa se aseaza si icnep ceva sa faca\",\n    \"taskPriority\": \"MAJOR\",\n    \"taskState\": \"IN_PROGRESS\",\n    \"senderId\": {\n        \"userId\": 2\n    },\n    \"receiverId\": {\n        \"userId\": 1\n    },\n    \"startDate\": \"2019-01-03T06:45:00.000+0000\",\n    \"dueDate\": \"2019-01-06T06:45:00.000+0000\"\n}"
+							"raw": "{\n    \"taskTitle\": \"Sa inshepem bleadi odata ceva sa fecm\",\n    \"taskDescription\": \"Tanya,Jenya,Margo,Andriuxa se aseaza si icnep ceva sa faca\",\n    \"taskPriority\": \"MAJOR\",\n    \"taskState\": \"IN_PROGRESS\",\n    \"receiverId\": {\n        \"userId\": 1\n    },\n    \"dueDate\": \"2019-01-06T06:45:00.000+0000\"\n}"
 						},
 						"url": {
 							"raw": "localhost:8080/tasks",
@@ -376,11 +469,16 @@
 								"key": "Content-Type",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzbm93dG9zbG93IiwiZXhwIjoxNTc5MzY2MDA4LCJpYXQiOjE1NzkzNDgwMDh9.8VsQioWqoWJvO_J9GtDzhM6sKwwe_QcRTRnVVPt13QIjznNuZYY1yVQmPuHsAUETfMfbOs3OoB8dGRcdyhI7wA",
+								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"taskTitle\": \"Sa inshepem bleadi odata ceva sa facem\",\n    \"taskDescription\": \"Tanya,Jenya,Margo,Andriuxa se aseaza si incep ceva sa faca\",\n    \"taskPriority\": \"MAJOR\",\n    \"taskState\": \"IN_PROGRESS\",\n    \"senderId\": {\n        \"userId\": 2\n    },\n    \"receiverId\": {\n        \"userId\": 1\n    },\n    \"startDate\": \"2019-01-03T06:45:00.000+0000\",\n    \"dueDate\": \"2019-01-06T06:45:00.000+0000\"\n}"
+							"raw": "{\n    \"taskTitle\": \"Sa inshepem bleadi odata ceva sa fecm\",\n    \"taskDescription\": \"Tanya,Jenya,Margo,Andriuxa,Vova se aseaza si icnep ceva sa faca\",\n    \"taskPriority\": \"MAJOR\",\n    \"taskState\": \"IN_PROGRESS\",\n    \"receiverId\": {\n        \"userId\":1\n    },\n    \"comments\": [],\n    \"startDate\": \"2020-01-18T01:22:44.512+0000\",\n    \"dueDate\": \"2019-01-06T06:45:00.000+0000\"\n}"
 						},
 						"url": {
 							"raw": "localhost:8080/tasks/update/3",
@@ -402,7 +500,13 @@
 					"name": "Delete task by ID",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzbm93dG9zbG93IiwiZXhwIjoxNTc5MzY2MDA4LCJpYXQiOjE1NzkzNDgwMDh9.8VsQioWqoWJvO_J9GtDzhM6sKwwe_QcRTRnVVPt13QIjznNuZYY1yVQmPuHsAUETfMfbOs3OoB8dGRcdyhI7wA",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "localhost:8080/tasks/delete/3",
 							"host": [
@@ -435,6 +539,291 @@
 					"listen": "test",
 					"script": {
 						"id": "c897afe6-3a7e-40d6-a49c-cacc7b48048b",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "AuthRequest",
+			"item": [
+				{
+					"name": "AuthRequest",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJrYXRlIiwiZXhwIjoxNTc4NzUzNjIxLCJpYXQiOjE1Nzg3MzU2MjF9.ImInn613dyveMDay2dLnVp7No459bdf3JobNPIAFeVb-FAj2l9ReFjLnpCYRKWUJ13jsGc69_BnLPU_IZTeilA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"kate\",\n\t\"password\": \"123456789\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"login"
+							]
+						},
+						"description": "Request to authentificate user"
+					},
+					"response": [
+						{
+							"name": "AuthRequest",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJrYXRlIiwiZXhwIjoxNTc4NzUzNjIxLCJpYXQiOjE1Nzg3MzU2MjF9.ImInn613dyveMDay2dLnVp7No459bdf3JobNPIAFeVb-FAj2l9ReFjLnpCYRKWUJ13jsGc69_BnLPU_IZTeilA",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"username\": \"kate\",\n\t\"password\": \"123456789\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/login",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Max-Age",
+									"value": "3600"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Expires",
+									"value": "0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 11 Jan 2020 09:42:19 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"jwttoken\": \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJrYXRlIiwiZXhwIjoxNTc4NzUzNzM5LCJpYXQiOjE1Nzg3MzU3Mzl9.nau4JK4jPKiRgRUOcLc6_8yjA5knRQsE8meY7MUTO4WhDcBlwQQvjjhEMOakjNofj7UqWMlP_-FAZD6lYGxR4w\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Request for AUTH with JWT TOKEN",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "0acc9a75-7921-465f-9ee9-cad66fc10d3b",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "dba4e4ff-01b7-4c62-8925-5d1486cda9a0",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "CommentRequests",
+			"item": [
+				{
+					"name": "Get list of comments",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzbm93dG9zbG93IiwiZXhwIjoxNTc5MzY2MDA4LCJpYXQiOjE1NzkzNDgwMDh9.8VsQioWqoWJvO_J9GtDzhM6sKwwe_QcRTRnVVPt13QIjznNuZYY1yVQmPuHsAUETfMfbOs3OoB8dGRcdyhI7wA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/comments",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"comments"
+							]
+						},
+						"description": "Get list of all projectss using method get;\n\nlink:localhost:8080/comments"
+					},
+					"response": []
+				},
+				{
+					"name": "Create comment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzbm93dG9zbG93IiwiZXhwIjoxNTc5MzY2MDA4LCJpYXQiOjE1NzkzNDgwMDh9.8VsQioWqoWJvO_J9GtDzhM6sKwwe_QcRTRnVVPt13QIjznNuZYY1yVQmPuHsAUETfMfbOs3OoB8dGRcdyhI7wA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"commentContent\": \"This task was made very good\"\n    \n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/comments/1/create",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"comments",
+								"1",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get list of comments by task ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Request for Comment entity",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "47f2b044-235b-482e-b425-54b232d3d64e",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "ae6aab01-7d2e-4a75-8297-e0785d962a84",
 						"type": "text/javascript",
 						"exec": [
 							""
