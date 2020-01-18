@@ -69,11 +69,7 @@ databaseChangeLog:
                   type: varchar(50)
                   constraints:
                     nullable: false
-              - column:
-                  name: user_role
-                  type: varchar(50)
-                  constraints:
-                    nullable: false
+
 
         - createTable:
             tableName: tasks
@@ -128,14 +124,7 @@ databaseChangeLog:
                     nullable: false
 
 
-        - createTable:
-            tableName: user_role
-            columns:
-              - column:
-                  name: user_role
-                  type: varchar(50)
-                  constraints:
-                    primaryKey: true
+
 
         - createTable:
             tableName: state
@@ -168,11 +157,7 @@ databaseChangeLog:
             separator: ;
             tableName: state
 
-        - loadData:
-            encoding: UTF-8
-            file: db/csv/roles.csv
-            separator: ;
-            tableName: user_role
+
         - loadData:
             encoding: UTF-8
             file: db/csv/projects.csv
@@ -189,15 +174,7 @@ databaseChangeLog:
             separator: ;
             tableName: tasks
 
-        - addForeignKeyConstraint:
-            baseColumnNames: user_role
-            baseTableName: users
-            constraintName: fk_user_role
-            onDelete: CASCADE
-            onUpdate: RESTRICT
-            referencedColumnNames: user_role
-            referencedTableName: user_role
-            validate: true
+
         - addForeignKeyConstraint:
             baseColumnNames: task_state
             baseTableName: tasks

@@ -1,8 +1,10 @@
 package com.taskMannagerTool.tasktoolservice.jwt;
 
+import com.taskMannagerTool.tasktoolservice.models.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,6 +19,7 @@ import java.util.function.Function;
 
 @Component
 @RequiredArgsConstructor
+@Data
 public class JwtToken implements Serializable{
 
     @Value("${jwt.token.secret}")

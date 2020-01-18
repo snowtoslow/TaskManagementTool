@@ -41,10 +41,12 @@ public class User {
     private String userEmail;
 
 
-    @OneToOne//вот тут была боль
+
+
+    /*@OneToOne//вот тут была боль
     @JoinColumn(name = "user_role")
     @JsonIgnore
-    private Role roles;
+    private Role roles;*/
 
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -108,12 +110,12 @@ public class User {
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
     }
-    @JsonIgnore
+   /* @JsonIgnore
     public Role getRoles() {
         return roles;
     }
     @JsonProperty
     public void setRoles(Role roles) {
         this.roles = roles;
-    }
+    }*/
 }

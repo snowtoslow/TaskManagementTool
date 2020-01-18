@@ -7,6 +7,8 @@ import com.taskMannagerTool.tasktoolservice.service.serviceImpl.TaskServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 import java.util.List;
 
 
@@ -19,8 +21,8 @@ public class TaskController extends TaskServiceImpl {
 
 
     @PostMapping("/tasks")
-    public ResponseEntity<Object> createTask(@RequestBody Task task) {
-        return taskServiceImpl.createTask(task);
+    public ResponseEntity<Object> createTask(@RequestBody Task task, Principal principal) {
+        return taskServiceImpl.createTask(task,principal);
     }
 
     @GetMapping("/tasks")

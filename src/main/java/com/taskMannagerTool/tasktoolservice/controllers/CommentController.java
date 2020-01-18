@@ -2,11 +2,17 @@ package com.taskMannagerTool.tasktoolservice.controllers;
 
 
 import com.taskMannagerTool.tasktoolservice.models.Comment;
+import com.taskMannagerTool.tasktoolservice.models.Task;
+import com.taskMannagerTool.tasktoolservice.repository.CommentRepository;
 import com.taskMannagerTool.tasktoolservice.service.serviceImpl.CommentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 
@@ -17,9 +23,13 @@ public class CommentController extends CommentServiceImpl {
     private CommentServiceImpl commentServiceImpl;
 
 
-    @PostMapping("/comments/create")
-    public ResponseEntity<Object> createComment(@RequestBody Comment comment) {
-        return commentServiceImpl.createComment(comment);
+
+
+
+
+    @PostMapping("/comments/{id}/create")
+    public ResponseEntity<Object> createComment(@RequestBody Comment comment,@PathVariable int id,Principal principal) {
+        return commentServiceImpl.createComment(comment,principal,id);
     }
 
     @DeleteMapping("/comments/delete/{commentId}")
@@ -42,6 +52,9 @@ public class CommentController extends CommentServiceImpl {
     public List<Comment> findAll(){
         return commentServiceImpl.findAllComments();
     }
+
+
+
 
 
 }

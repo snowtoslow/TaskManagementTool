@@ -1,17 +1,28 @@
 package com.taskMannagerTool.tasktoolservice.service.serviceImpl;
 
 import com.taskMannagerTool.tasktoolservice.models.Comment;
+import com.taskMannagerTool.tasktoolservice.models.Task;
+import com.taskMannagerTool.tasktoolservice.models.User;
 import com.taskMannagerTool.tasktoolservice.repository.CommentRepository;
+import com.taskMannagerTool.tasktoolservice.repository.TaskRepository;
+import com.taskMannagerTool.tasktoolservice.repository.UserRepository;
 import com.taskMannagerTool.tasktoolservice.service.CommentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.Future;
 
 @Service
 @Slf4j
@@ -19,6 +30,13 @@ public class CommentServiceImpl implements CommentService {
 
     @Autowired
     private CommentRepository commentRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
 
 
 
@@ -28,7 +46,11 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public ResponseEntity<Object> createComment(Comment comment) {
+    public ResponseEntity<Object> createComment(Comment comment, Principal principal,int id) {
+        comment.setUser(userRepository.findUserByUsername(principal.getName()));
+        String sql = "SELECT public.comments.task_id FROM public.comments WHERE public.comments.comment_id = ?";
+        comment.setTaskId(jdbcTemplate.queryForObject(sql, new Object[]{id}, Integer.class));
+        log.info("USER:{}",userRepository.findUserByUsername(principal.getName()).getUsername());
         Comment savedComment = commentRepository.save(comment);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{commentId}")
                 .build(savedComment.getCommentId());
@@ -36,29 +58,20 @@ public class CommentServiceImpl implements CommentService {
         return ResponseEntity.created(location).build();
     }
 
-   /* @Override
-    public Optional<Comment> findCommentByUsername(String username){
-        Optional<Comment> existingComment = Optional.ofNullable(commentRepository.findCommentsByUser_Username(username));
-        log.info("Comment:{}", existingComment);
 
-        if (!existingComment.isPresent()) {
-            System.out.println("There is no such comment!");
-        }
-        return existingComment;
-    }
-
-    @Override
-    public Optional<Comment> findCommentsByTaskTitle(String taskTitle) {
-        Optional<Comment> existingComment = Optional.ofNullable(commentRepository.findCommentsByTask_taskTitle(taskTitle));
-        log.info("Comment:{}", existingComment);
-
-        if (!existingComment.isPresent()) {
-            System.out.println("There is no such comment!");
-        }
-        return existingComment;
-    }*/
    public List<Comment> findAllComments(){
 
        return commentRepository.findAll();
    }
+
+    public int getTaskIdByCommentId(int id){
+        String sql = "SELECT public.comments.task_id FROM public.comments WHERE public.comments.comment_id = ?";
+
+         return jdbcTemplate.queryForObject(sql, new Object[]{id}, Integer.class);
+    }
+
+    //get comments by taskID;
+
+
+
 }

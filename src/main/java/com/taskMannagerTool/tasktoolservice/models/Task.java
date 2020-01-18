@@ -62,6 +62,8 @@ public class Task {
     @JoinColumn(name = "task_id")
     private List<Comment> comments;
 
+
+
     @JsonIgnore
     public int getTaskId() {
         return taskId;
@@ -103,12 +105,12 @@ public class Task {
         this.taskState = taskState;
     }
 
-    @JsonIgnore
+    /*@JsonIgnore*/
     public Date getStartDate() {
         return StartDate;
     }
 
-    @JsonIgnore
+    /*@JsonProperty*/
     public void setStartDate(Date startDate) {
         StartDate = startDate;
     }
@@ -121,12 +123,15 @@ public class Task {
         DueDate = dueDate;
     }
 
+    /*@JsonIgnore*/
     public User getSenderId() {
         return senderId;
     }
 
+    /*@JsonIgnore*/
     public void setSenderId(User senderId) {
         this.senderId = senderId;
+
     }
 
     public User getReceiverId() {

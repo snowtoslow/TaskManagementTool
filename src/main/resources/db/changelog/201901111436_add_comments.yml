@@ -27,6 +27,11 @@ databaseChangeLog:
                   type: INT
                   constraints:
                     nullable: true
+              - column:
+                  name: create_at
+                  type: TIMESTAMP WITHOUT TIME ZONE
+                  constraints:
+                    nullable: false
 
         - loadData:
             encoding: UTF-8

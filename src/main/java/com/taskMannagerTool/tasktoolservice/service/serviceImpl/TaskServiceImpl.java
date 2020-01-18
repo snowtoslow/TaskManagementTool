@@ -1,31 +1,39 @@
 package com.taskMannagerTool.tasktoolservice.service.serviceImpl;
 
-import com.taskMannagerTool.tasktoolservice.models.Priority;
-import com.taskMannagerTool.tasktoolservice.models.State;
 import com.taskMannagerTool.tasktoolservice.models.Task;
-import com.taskMannagerTool.tasktoolservice.models.User;
 import com.taskMannagerTool.tasktoolservice.repository.TaskRepository;
+import com.taskMannagerTool.tasktoolservice.repository.UserRepository;
 import com.taskMannagerTool.tasktoolservice.service.TaskService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.security.Principal;
 import java.util.*;
 
-import static com.taskMannagerTool.tasktoolservice.models.Priority.*;
-import static com.taskMannagerTool.tasktoolservice.models.State.*;
-
 @Service
+@Slf4j
 public class TaskServiceImpl implements TaskService {
 
     @Autowired
     private TaskRepository taskRepository;
 
-    public ResponseEntity<Object> createTask(Task task){//добавить респонс бади
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
+
+
+
+
+    public ResponseEntity<Object> createTask(Task task,Principal principal){//добавить респонс бади
+        task.setSenderId(userRepository.findUserByUsername(principal.getName()));
         Task savedTask = taskRepository.save(task);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{taskId}")
                 .build(savedTask.getTaskId());
@@ -68,6 +76,13 @@ public class TaskServiceImpl implements TaskService {
         taskRepository.save(task);
 
         return ResponseEntity.noContent().build();
+    }
+
+
+    public List<Task> getTaskByReceiverId(int id){
+        String query = "SELECT * FROM public.tasks WHERE public.tasks.sender_id = ?";
+
+        return jdbcTemplate.queryForObject(query, new Object[]{id}, List.class);
     }
 
 }

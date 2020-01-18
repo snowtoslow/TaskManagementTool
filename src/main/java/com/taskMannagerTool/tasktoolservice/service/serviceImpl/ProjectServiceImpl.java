@@ -20,7 +20,7 @@ public class ProjectServiceImpl implements ProjectService {
 
 
 
-    public ResponseEntity<Object> createProject( Project project){//добавить респонс бади
+    public ResponseEntity<Object> createProject(Project project){//добавить респонс бади
         Project savedProject = projectRepository.save(project);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{taskId}")
                 .build(savedProject.getProjectId());
@@ -35,7 +35,7 @@ public class ProjectServiceImpl implements ProjectService {
 
     //Read a specific task by Id;
 
-    public Project readAProjectById( int projectId){
+    public Project readAProjectById(int projectId){
         Optional<Project> project = projectRepository.findById(projectId);//костыль надо поменять
 
         if (!project.isPresent()){
