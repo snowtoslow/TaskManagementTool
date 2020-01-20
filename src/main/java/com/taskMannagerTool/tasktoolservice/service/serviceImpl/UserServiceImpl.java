@@ -92,13 +92,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findUserByUsername(String username) throws UserException {
-
-        /*Optional<User> user = Optional.ofNullable(userRepository.findUserByUsername(username));//костыль надо поменять
-
-        if (!user.isPresent()){
-            System.out.println("There is no user with such id: "+ username);
-        }*/
-        return /*user.get();*/Optional.ofNullable(userRepository.findUserByUsername(username)).orElseThrow(()->new UserException("There is no user with such username" + username));
+        return Optional.ofNullable(userRepository.findUserByUsername(username)).orElseThrow(()->new UserException("There is no user with such username" + username));
     }
 
 

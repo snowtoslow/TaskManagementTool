@@ -23,10 +23,6 @@ public class CommentController extends CommentServiceImpl {
     private CommentServiceImpl commentServiceImpl;
 
 
-
-
-
-
     @PostMapping("/comments/{id}/create")
     public ResponseEntity<Object> createComment(@RequestBody Comment comment,@PathVariable int id,Principal principal) {
         return commentServiceImpl.createComment(comment,principal,id);
@@ -37,16 +33,6 @@ public class CommentController extends CommentServiceImpl {
         commentServiceImpl.deleteComment(commentId);
     }
 
-    /*@GetMapping("/comments/{username}")
-    public Optional<Comment> findCommentByUsername(@PathVariable String username){
-        return commentServiceImpl.findCommentByUsername(username);
-    }
-
-    @GetMapping("/comments/{taskTitle}")
-    public Optional<Comment> findCommentsByTaskTitle(@PathVariable String taskTitle){
-        return commentServiceImpl.findCommentsByTaskTitle(taskTitle);
-
-    }*/
 
     @GetMapping("/comments")
     public List<Comment> findAll(){

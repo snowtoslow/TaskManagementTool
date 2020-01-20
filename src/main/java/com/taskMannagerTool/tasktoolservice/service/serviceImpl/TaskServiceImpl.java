@@ -1,10 +1,12 @@
 package com.taskMannagerTool.tasktoolservice.service.serviceImpl;
 
 import com.taskMannagerTool.tasktoolservice.models.Task;
+import com.taskMannagerTool.tasktoolservice.models.User;
 import com.taskMannagerTool.tasktoolservice.repository.TaskRepository;
 import com.taskMannagerTool.tasktoolservice.repository.UserRepository;
 import com.taskMannagerTool.tasktoolservice.service.TaskService;
 import lombok.extern.slf4j.Slf4j;
+import com.taskMannagerTool.tasktoolservice.exceptions.UserException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -24,15 +26,6 @@ public class TaskServiceImpl implements TaskService {
 
     @Autowired
     private UserRepository userRepository;
-
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
-
-
-
-
-
-
 
 
 
@@ -85,10 +78,14 @@ public class TaskServiceImpl implements TaskService {
     }
 
 
-    public List<Task> getTaskByReceiverId(int id){
-        String query = "SELECT * FROM public.tasks WHERE public.tasks.receiver_id = ?";
+    public List<Task> getTasksByReceiverId(String username) throws UserException{
+        User user = userRepository.findUserByUsername(username);
+        if (user == null){
+            throw new UserException("There is no user with such Username!");
+        }
 
-        return jdbcTemplate.queryForObject(query, new Object[]{id}, List.class);
+        return taskRepository.findTaskByReceiverId(user);
+
     }
 
 }
