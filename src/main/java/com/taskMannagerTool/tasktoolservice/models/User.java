@@ -1,48 +1,62 @@
 package com.taskMannagerTool.tasktoolservice.models;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 import javax.persistence.*;
-import java.util.List;
+
 
 
 @Entity
-@Table(name = "users")
+@Table(name = "users"/*,schema = "justfortest"*/)
+@Component
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "Id_User")
+    @Column(name = "user_id")
+    @JsonIgnore
     public int userId;
 
-    @Column(name = "Name")
+    @Column(name = "first_name")
     private String name;
 
-    @Column(name = "Surname")
+    @Column(name = "last_name")
     private String surname;
 
-    @Column(name = "Username")
+    @Column(name = "user_name")
     private String username;
 
-    @Column(name = "Password")
+    @Column(name = "user_password")
+    @JsonIgnore
     private String userPassword;
 
-    @Column(name = "Speciality")
-    private String jobTitle;
+    @Column(name = "user_speciality")
+    private String Speciality;
 
-    @Column(name = "User_Email")
+    @Column(name = "user_email")
     private String userEmail;
 
-    @Column(name = "User_Git")
-    private String userGit;
-
-    @OneToMany(cascade = CascadeType.ALL)//под вопросом
-    @JoinColumn(name = "Id_User",referencedColumnName = "Id_User")
-    private List<Task> tasks;
 
 
+
+    /*@OneToOne//вот тут была боль
+    @JoinColumn(name = "user_role")
+    @JsonIgnore
+    private Role roles;*/
+
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @JsonIgnore
     public int getUserId() {
         return userId;
     }
-
+    @JsonProperty
     public void setUserId(int userId) {
         this.userId = userId;
     }
@@ -71,20 +85,22 @@ public class User {
         this.username = username;
     }
 
+    @JsonIgnore
     public String getUserPassword() {
         return userPassword;
     }
 
+    @JsonProperty
     public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
+        this.userPassword = passwordEncoder().encode(userPassword);
     }
 
-    public String getJobTitle() {
-        return jobTitle;
+    public String getSpeciality() {
+        return Speciality;
     }
 
-    public void setJobTitle(String jobTitle) {
-        this.jobTitle = jobTitle;
+    public void setSpeciality(String speciality) {
+        Speciality = speciality;
     }
 
     public String getUserEmail() {
@@ -94,20 +110,12 @@ public class User {
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
     }
-
-    public String getUserGit() {
-        return userGit;
+   /* @JsonIgnore
+    public Role getRoles() {
+        return roles;
     }
-
-    public void setUserGit(String userGit) {
-        this.userGit = userGit;
-    }
-
-    public List<Task> getTasks() {
-        return tasks;
-    }
-
-    public void setTasks(List<Task> tasks) {
-        this.tasks = tasks;
-    }
+    @JsonProperty
+    public void setRoles(Role roles) {
+        this.roles = roles;
+    }*/
 }

@@ -1,51 +1,76 @@
 package com.taskMannagerTool.tasktoolservice.models;
 
+
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
+
 
 
 @Entity
-@Table(name = "tasks")
+@Table(name = "tasks"/*,schema = "justfortest"*/)
 public class Task {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "Id_Task")
+    @Column(name = "task_id")
+    @JsonIgnore
     private int taskId;
 
-    @Column(name = "Task_Name")
+    @Column(name = "task_title")
     private String taskTitle;
 
-    @Column(name = "Task_Description")
+    @Column(name = "task_description")
     private String taskDescription;
 
-    @Column(name = "Task_Priority")
+    @Column(name = "task_priority")
     @Enumerated(EnumType.STRING)
     private Priority taskPriority;
 
-    @Column(name = "Task_State")
+    @Column(name = "task_state")
     @Enumerated(EnumType.STRING)
     private State taskState;
 
-    @Column(name = "Task_StartDate")
+
+    @Column(name = "start_date")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @CreationTimestamp
+    @JsonIgnore
     private Date StartDate;
 
-    @Column(name = "Task_DueDate")
+
+    @Column(name = "due_date")
     private Date DueDate;
 
-    @Column(name = "Id_Sender")
-    private int senderId;
+    @OneToOne
+    @JoinColumn(name = "sender_id")
+    private User senderId;
 
-    @Column(name = "Id_Receiver")
-    private int receiverId;
+    @OneToOne
+    @JoinColumn(name = "receiver_id")
+    private User receiverId;
 
 
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "task_id")
+    private List<Comment> comments;
+
+
+
+    @JsonIgnore
     public int getTaskId() {
         return taskId;
     }
-
-    public void setTaskTd(int taskTd) {
-        this.taskId = taskTd;
+    @JsonProperty
+    public void setTaskId(int taskId) {
+        this.taskId = taskId;
     }
 
     public String getTaskTitle() {
@@ -55,7 +80,6 @@ public class Task {
     public void setTaskTitle(String taskTitle) {
         this.taskTitle = taskTitle;
     }
-
 
     public String getTaskDescription() {
         return taskDescription;
@@ -73,10 +97,6 @@ public class Task {
         this.taskPriority = taskPriority;
     }
 
-    public void setTaskId(int taskId) {
-        this.taskId = taskId;
-    }
-
     public State getTaskState() {
         return taskState;
     }
@@ -85,10 +105,12 @@ public class Task {
         this.taskState = taskState;
     }
 
+    @JsonIgnore
     public Date getStartDate() {
         return StartDate;
     }
 
+    @JsonProperty
     public void setStartDate(Date startDate) {
         StartDate = startDate;
     }
@@ -101,19 +123,30 @@ public class Task {
         DueDate = dueDate;
     }
 
-    public int getSenderId() {
+    @JsonIgnore
+    public User getSenderId() {
         return senderId;
     }
 
-    public void setSenderId(int senderId) {
+    @JsonIgnore
+    public void setSenderId(User senderId) {
         this.senderId = senderId;
+
     }
 
-    public int getReceiverId() {
+    public User getReceiverId() {
         return receiverId;
     }
 
-    public void setReceiverId(int receiverId) {
+    public void setReceiverId(User receiverId) {
         this.receiverId = receiverId;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }

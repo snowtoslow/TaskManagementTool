@@ -1,7 +1,10 @@
 package com.taskMannagerTool.tasktoolservice.models;
 
+import javax.persistence.Column;
+import javax.persistence.Table;
+
+@Table(name = "state")
 public enum State {
-
-    CURRENT, FINISHED, IN_PROGRESS, PAUSED, W84A
-
+    @Column(name = "state")
+    TO_DO, DONE, IN_PROGRESS, WAITING_FOR_APPROVEMENT
 }

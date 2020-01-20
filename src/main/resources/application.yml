@@ -1,0 +1,20 @@
+server:
+  port: 8080
+
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: none
+  profiles:
+    active: dev
+
+
+jwt:
+  token:
+    secret: secret-key
+
+
+
+
+
