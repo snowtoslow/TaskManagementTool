@@ -56,4 +56,9 @@ public class TaskController extends TaskServiceImpl {
         return taskServiceImpl.getTasksByReceiverId(username);
     }
 
+    @GetMapping("tasks/logged")
+    public List<Task> getTaskBySenderId(Principal principal) throws UserException {
+        return taskServiceImpl.getTaskBySenderId(principal);
+    }
+
 }

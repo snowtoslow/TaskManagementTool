@@ -3,6 +3,7 @@ package com.taskMannagerTool.tasktoolservice.service.serviceImpl;
 import com.taskMannagerTool.tasktoolservice.models.Project;
 import com.taskMannagerTool.tasktoolservice.repository.ProjectRepository;
 import com.taskMannagerTool.tasktoolservice.service.ProjectService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class ProjectServiceImpl implements ProjectService {
 
     @Autowired
@@ -48,6 +50,8 @@ public class ProjectServiceImpl implements ProjectService {
    public ResponseEntity<Object> updateProject(Project project, int id) {
 
        Optional<Project> taskOptional = projectRepository.findById(id);
+       log.info("projectID:{}",projectRepository.findById(id).get().getProjectId());
+
 
        if (!taskOptional.isPresent())
            return ResponseEntity.notFound().build();

@@ -64,6 +64,7 @@ public class TaskServiceImpl implements TaskService {
     public ResponseEntity<Object> updateTask(Task task, int id,Principal principal) {
 
         Optional<Task> taskOptional = taskRepository.findById(id);
+        log.info("TASKID:{}",taskOptional.get().getTaskId());
 
         if (!taskOptional.isPresent())
             return ResponseEntity.notFound().build();
@@ -86,6 +87,14 @@ public class TaskServiceImpl implements TaskService {
 
         return taskRepository.findTaskByReceiverId(user);
 
+    }
+
+    public List<Task> getTaskBySenderId(Principal principal) throws UserException {
+        User user = userRepository.findUserByUsername(principal.getName());
+        if (user == null){
+            throw new UserException("There is nu user with such username!" + principal.getName());
+        }
+        return taskRepository.findTaskByReceiverId(user);
     }
 
 }

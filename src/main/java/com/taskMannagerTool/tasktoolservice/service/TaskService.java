@@ -2,6 +2,7 @@ package com.taskMannagerTool.tasktoolservice.service;
 
 
 
+import com.taskMannagerTool.tasktoolservice.exceptions.UserException;
 import com.taskMannagerTool.tasktoolservice.models.Task;
 import org.springframework.http.ResponseEntity;
 
@@ -21,6 +22,10 @@ public interface TaskService{
     ResponseEntity<Object> updateTask(Task task,int id,Principal principal);//U !!!!!пересмотреть в имплементэйшне!!!
 
     void deleteTask(int taskId);//D
+
+    List<Task> getTaskBySenderId(Principal principal) throws UserException;
+
+    List<Task> getTasksByReceiverId(String username) throws UserException;
 
 
 

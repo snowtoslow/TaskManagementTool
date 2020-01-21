@@ -76,9 +76,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public ResponseEntity<Object> updateUser(User user, int id) {
 
-
-
         Optional<User> userOptional = userRepository.findById(id);
+        log.info("USERID:{}",userOptional.get().userId);
 
         if (!userOptional.isPresent())
             return ResponseEntity.notFound().build();
