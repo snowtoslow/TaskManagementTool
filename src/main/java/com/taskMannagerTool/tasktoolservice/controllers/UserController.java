@@ -4,7 +4,6 @@ import com.taskMannagerTool.tasktoolservice.exceptions.UserException;
 import com.taskMannagerTool.tasktoolservice.models.User;
 import com.taskMannagerTool.tasktoolservice.repository.UserRepository;
 import com.taskMannagerTool.tasktoolservice.service.serviceImpl.UserServiceImpl;
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

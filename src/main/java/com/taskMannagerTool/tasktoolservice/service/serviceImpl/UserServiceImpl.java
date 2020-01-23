@@ -62,11 +62,10 @@ public class UserServiceImpl implements UserService {
             throw new UserException("You have missed USERNAME FIELD!!!!!!Please complete it!");
         }
 
-       User savedUser = userRepository.save(user);
-       URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+
+        User savedUser = userRepository.save(user);
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(savedUser.getUserId()).toUri();
-
-
         return ResponseEntity.created(location).build();
 
     }

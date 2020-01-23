@@ -1,6 +1,7 @@
 package com.taskMannagerTool.tasktoolservice.service;
 
 import com.taskMannagerTool.tasktoolservice.exceptions.UserException;
+import com.taskMannagerTool.tasktoolservice.models.DTO.UserDTO;
 import com.taskMannagerTool.tasktoolservice.models.User;
 import org.springframework.http.ResponseEntity;
 
